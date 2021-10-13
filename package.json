@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "ls": "node_modules/.bin/ls",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "nodemon server.js",
     "start": "node server.js",
@@ -13,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.13"
+    "nodemon": "^2.0.13",
+    "yarn_npm_ls": "^1.0.18"
   }
 }
