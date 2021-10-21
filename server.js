@@ -27,6 +27,15 @@ app.get('/query', (req, res, next) => {
   })
 })
 
+app.get('/query/test/:number', (req, res, next) => {
+  console.log(req.params)
+  const { test } = req.query
+  // do what we need with the param
+  res.status('200').json({
+    params: req.params,
+  })
+})
+
 app.post('/', (req, res, next) => {
   console.log(req.body)
   const { data } = req.body
