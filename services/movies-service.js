@@ -9,6 +9,10 @@ class MoviesService {
     return this.getAllMovies().find((movie) => movie.id === id)
   }
 
+  static getByTitle(title) {
+    return this.getAllMovies().find((movie) => movie.title === title)
+  }
+
   static createMovie({ title, img, synopsis, rating, year }) {
     const newMovie = {
       id: this.getNextIndex(),
@@ -21,6 +25,32 @@ class MoviesService {
 
     this.allMovies.push(newMovie)
     return newMovie
+  }
+
+  static updateMovie(id, { title, img, synopsis, rating, year }) {
+    const movieIndex = this.allMovies.indexOf(this.getById(id))
+    const newMovieObject = {
+      id,
+      title,
+      img,
+      synopsis,
+      rating,
+      year,
+    }
+
+    this.allMovies[movieIndex] = newMovieObject
+    return newMovieObject
+  }
+
+  static deleteMovie(id) {
+    const movie = this.getById(id)
+
+    if (movie) {
+      const movieIndex = this.allMovies.indexOf(movie)
+      this.allMovies.splice(movieIndex, 1)
+    }
+
+    return movie
   }
 
   static init() {
