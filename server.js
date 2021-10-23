@@ -47,4 +47,6 @@ app.post('/', (req, res, next) => {
   })
 })
 
-app.listen(8080, () => console.log(`server started on port ${port}`))
+const server = app.listen(8080, () => console.log(`server started on port ${port}`))
+
+module.exports = { app, server }
