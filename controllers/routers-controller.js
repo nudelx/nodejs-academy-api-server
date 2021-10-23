@@ -19,13 +19,50 @@ function getMovies(request, response) {
 }
 
 function getById(request, response) {
-  response.status(501).json({ error: 'This method in not implemented yet' })
+  const movieId = parseInt(request.params.id)
+  const movie = MoviesService.getById(movieId)
+
+  if (!!movie) {
+    response.status(200).json(movie)
+    return
+  } else {
+    response.status(404).json({ error: `movie with id ${movieId} was not found` })
+    return
+  }
 }
 
 function createMovie(request, response) {
-  response.status(501).json({ error: 'This method in not implemented yet' })
+  const { title, img, synopsis, rating, year } = request.body
+
+  if (!title) {
+    response.status(400).json({ error: 'title is a required body param' })
+    return
+  }
+
+  if (!synopsis) {
+    response.status(400).json({ error: 'synopsis is a required body param' })
+    return
+  }
+
+  if (!rating) {
+    response.status(400).json({ error: 'rating is a required body param' })
+    return
+  }
+
+  if (!year) {
+    response.status(400).json({ error: 'year is a required body param' })
+    return
+  }
+
+  const newMovie = MoviesService.createMovie({ title, img, synopsis, rating, year })
+  response.status(201).json(newMovie)
+  return
 }
 
+/**
+ * If the name exists, it replaces the movie (keeps its id)
+ * Else, it creates a new movie using a new id
+ */
 function upsertMovie(request, response) {
   response.status(501).json({ error: 'This method in not implemented yet' })
 }
