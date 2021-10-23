@@ -1,9 +1,6 @@
 const INITIAL_MOVIES = require('./movies.json')
 
 class MoviesService {
-  static allMovies = [].concat(INITIAL_MOVIES.movies)
-  static currentIndex = this.allMovies[this.allMovies.length - 1].id
-
   static getAllMovies() {
     return this.allMovies
   }
@@ -26,9 +23,16 @@ class MoviesService {
     return newMovie
   }
 
+  static init() {
+    this.allMovies = [].concat(INITIAL_MOVIES.movies)
+    this.currentIndex = this.allMovies[this.allMovies.length - 1].id
+  }
+
   static getNextIndex() {
     return ++this.currentIndex
   }
 }
+
+MoviesService.init()
 
 module.exports = { MoviesService }
