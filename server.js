@@ -1,5 +1,7 @@
 const express = require('express')
 const serverLog = require('./serverLog')
+const { moviesRouter } = require('./routers/movies-router')
+
 const app = express()
 const port = 8080
 
@@ -10,6 +12,7 @@ app.use(
     extended: true,
   })
 )
+app.use('/movies', moviesRouter)
 
 app.get('/', (req, res, next) => {
   res.status(200).json({
