@@ -18,4 +18,24 @@ function getMovies(request, response) {
   return
 }
 
-module.exports = { getMovies }
+function getById(request, response) {
+  response.status(501).json({ error: 'This method in not implemented yet' })
+}
+
+function createMovie(request, response) {
+  response.status(501).json({ error: 'This method in not implemented yet' })
+}
+
+function upsertMovie(request, response) {
+  response.status(501).json({ error: 'This method in not implemented yet' })
+}
+
+function modifyMovie(request, response) {
+  response.status(501).json({ error: 'This method in not implemented yet' })
+}
+
+function deleteMovie(request, response) {
+  response.status(501).json({ error: 'This method in not implemented yet' })
+}
+
+module.exports = { getMovies, getById, createMovie, upsertMovie, modifyMovie, deleteMovie }
