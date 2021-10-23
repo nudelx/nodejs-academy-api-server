@@ -12,7 +12,7 @@ app.use(
 )
 
 app.get('/', (req, res, next) => {
-  res.status('200').json({
+  res.status(200).json({
     server: '1.0.0',
     name: 'nodejs-api-server',
   })
@@ -22,7 +22,7 @@ app.get('/query', (req, res, next) => {
   console.log(req.query)
   const { test } = req.query
   // do what we need with the param
-  res.status('200').json({
+  res.status(200).json({
     queryParams: req.query,
   })
 })
@@ -39,8 +39,8 @@ app.get('/query/test/:number', (req, res, next) => {
 app.post('/', (req, res, next) => {
   console.log(req.body)
   const { data } = req.body
-  res.status('200').json({
-    received: data
+  res.status(200).json({
+    received: data,
   })
 })
 
