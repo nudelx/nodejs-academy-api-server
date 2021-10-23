@@ -59,10 +59,6 @@ function createMovie(request, response) {
   return
 }
 
-/**
- * If the name exists, it replaces the movie (keeps its id)
- * Else, it creates a new movie using a new id
- */
 function upsertMovie(request, response) {
   response.status(501).json({ error: 'This method in not implemented yet' })
 }
