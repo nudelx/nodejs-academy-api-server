@@ -165,7 +165,7 @@ describe('Movies Controller', () => {
         expect(response.body).to.exist
         expect(response.body.id).to.eq(existingMovie.id)
 
-        // expect not to found it when it's queried
+        // expect not to find it when it's queried
         await supertest(app).get(`/movies/${existingMovie.id}`).expect(404)
       })
     })
