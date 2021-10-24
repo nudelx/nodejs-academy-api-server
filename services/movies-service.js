@@ -2,7 +2,7 @@ const INITIAL_MOVIES = require('./movies.json')
 
 class MoviesService {
   static getAllMovies() {
-    return this.allMovies
+    return [...this.allMovies]
   }
 
   static getById(id) {
