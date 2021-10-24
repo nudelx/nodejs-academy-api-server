@@ -38,7 +38,10 @@ class MoviesService {
       year,
     }
 
-    this.allMovies[movieIndex] = newMovieObject
+    const newAlMovies = [...this.allMovies]
+    newAlMovies[movieIndex] = newMovieObject
+    this.allMovies = newAlMovies
+
     return newMovieObject
   }
 
@@ -47,7 +50,9 @@ class MoviesService {
 
     if (movie) {
       const movieIndex = this.allMovies.indexOf(movie)
-      this.allMovies.splice(movieIndex, 1)
+      const newAllMovies = [...this.allMovies]
+      newAllMovies.splice(movieIndex, 1)
+      this.allMovies = newAllMovies
     }
 
     return movie
