@@ -19,7 +19,7 @@ class MoviesService {
       year,
     }
 
-    this.allMovies.push(newMovie)
+    this.allMovies = [...this.allMovies, newMovie]
     return newMovie
   }
 
