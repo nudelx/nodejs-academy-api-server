@@ -85,7 +85,8 @@ function upsertMovie(request, response) {
 }
 
 function modifyMovie(request, response) {
-  const movieId = parseInt(request.params.id)
+  const { id } = request.params
+  const movieId = parseInt(id)
   const movie = MoviesService.getById(movieId)
   const doesMovieExist = !!movie
 
@@ -107,7 +108,8 @@ function modifyMovie(request, response) {
 }
 
 function deleteMovie(request, response) {
-  const movieId = parseInt(request.params.id)
+  const { id } = request.params
+  const movieId = parseInt(id)
   const deletedMovie = MoviesService.deleteMovie(movieId)
 
   if (!deletedMovie) {
