@@ -1,16 +1,17 @@
 const { MoviesService } = require('../services/movies-service')
 
 function getMovies(request, response) {
+  const { offset, limit } = request.query
   const allMovies = MoviesService.getAllMovies()
   let relevantMovies = allMovies.slice()
 
-  if (request.query.offset) {
-    const offset = parseInt(request.query.offset)
+  if (offset) {
+    const offset = parseInt(offset)
     relevantMovies = relevantMovies.slice(offset)
   }
 
-  if (request.query.limit) {
-    const limit = parseInt(request.query.limit)
+  if (limit) {
+    const limit = parseInt(limit)
     relevantMovies = relevantMovies.slice(0, limit)
   }
 
@@ -19,7 +20,7 @@ function getMovies(request, response) {
 }
 
 function getById(request, response) {
-  const movieId = parseInt(request.params.id)
+  const { id: movieId } = parseInt(request.params.id)
   const movie = MoviesService.getById(movieId)
 
   if (!!movie) {
