@@ -8,7 +8,7 @@ const {
   deleteMovie,
 } = require('../controllers/routers-controller')
 
-const moviesRouter = new express.Router()
+const moviesRouter = express.Router()
 
 moviesRouter.get('/', getMovies)
 moviesRouter.get('/:id', getById)

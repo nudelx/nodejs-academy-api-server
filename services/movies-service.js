@@ -23,7 +23,7 @@ class MoviesService {
       year,
     }
 
-    this.allMovies.push(newMovie)
+    this.allMovies = [...this.allMovies, newMovie]
     return newMovie
   }
 
@@ -54,7 +54,7 @@ class MoviesService {
   }
 
   static init() {
-    this.allMovies = [].concat(INITIAL_MOVIES.movies)
+    this.allMovies = [...INITIAL_MOVIES.movies]
     this.currentIndex = this.allMovies[this.allMovies.length - 1].id
   }
 
