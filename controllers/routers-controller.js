@@ -19,7 +19,8 @@ function getMovies(request, response) {
 }
 
 function getById(request, response) {
-  const { id: movieId } = parseInt(request.params.id)
+  const { id } = request.params
+  const movieId = parseInt(id)
   const movie = MoviesService.getById(movieId)
 
   if (!!movie) {
