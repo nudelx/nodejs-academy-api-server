@@ -6,12 +6,12 @@ function getMovies(request, response) {
   let relevantMovies = allMovies.slice()
 
   if (offset) {
-    offset = parseInt(offset)
+    offset = parseInt(offset, 10)
     relevantMovies = relevantMovies.slice(offset)
   }
 
   if (limit) {
-    limit = parseInt(limit)
+    limit = parseInt(limit, 10)
     relevantMovies = relevantMovies.slice(0, limit)
   }
 
@@ -20,7 +20,7 @@ function getMovies(request, response) {
 
 function getById(request, response) {
   const { id } = request.params
-  const movieId = parseInt(id)
+  const movieId = parseInt(id, 10)
   const movie = MoviesService.getById(movieId)
 
   if (!!movie) {
@@ -85,7 +85,7 @@ function upsertMovie(request, response) {
 }
 
 function modifyMovie(request, response) {
-  const movieId = parseInt(request.params.id)
+  const movieId = parseInt(request.params.id, 10)
   const movie = MoviesService.getById(movieId)
   const doesMovieExist = !!movie
 
@@ -107,7 +107,7 @@ function modifyMovie(request, response) {
 }
 
 function deleteMovie(request, response) {
-  const movieId = parseInt(request.params.id)
+  const movieId = parseInt(request.params.id, 10)
   const deletedMovie = MoviesService.deleteMovie(movieId)
 
   if (!deletedMovie) {
