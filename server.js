@@ -1,6 +1,6 @@
 const express = require('express')
 const serverLog = require('./serverLog')
-const { moviesRouter } = require('./routers/movies-router')
+const moviesRouter = require('./routers/movies-router')
 
 const app = express()
 const port = 8080

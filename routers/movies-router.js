@@ -6,7 +6,7 @@ const {
   upsertMovie,
   modifyMovie,
   deleteMovie,
-} = require('../controllers/routers-controller')
+} = require('../controllers/movies-controller')
 
 const moviesRouter = express.Router()
 
@@ -17,4 +17,4 @@ moviesRouter.put('/', upsertMovie)
 moviesRouter.patch('/:id', modifyMovie)
 moviesRouter.delete('/:id', deleteMovie)
 
-module.exports = { moviesRouter }
+module.exports = moviesRouter
