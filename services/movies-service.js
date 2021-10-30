@@ -12,7 +12,7 @@ function getById(id) {
 }
 
 function getByTitle(title) {
-  return this.getAllMovies().find((movie) => movie.title === title)
+  return getAllMovies().find((movie) => movie.title === title)
 }
 
 function createMovie({ title, img, synopsis, rating, year }) {
@@ -30,7 +30,7 @@ function createMovie({ title, img, synopsis, rating, year }) {
 }
 
 function updateMovie(id, { title, img, synopsis, rating, year }) {
-  const movieIndex = this.allMovies.indexOf(this.getById(id))
+  const movieIndex = allMovies.indexOf(getById(id))
   const newMovieObject = {
     id,
     title,
@@ -40,21 +40,21 @@ function updateMovie(id, { title, img, synopsis, rating, year }) {
     year,
   }
 
-  const newAlMovies = [...this.allMovies]
+  const newAlMovies = [...allMovies]
   newAlMovies[movieIndex] = newMovieObject
-  this.allMovies = newAlMovies
+  allMovies = newAlMovies
 
   return newMovieObject
 }
 
 function deleteMovie(id) {
-  const movie = this.getById(id)
+  const movie = getById(id)
 
   if (movie) {
-    const movieIndex = this.allMovies.indexOf(movie)
-    const newAllMovies = [...this.allMovies]
+    const movieIndex = allMovies.indexOf(movie)
+    const newAllMovies = [...allMovies]
     newAllMovies.splice(movieIndex, 1)
-    this.allMovies = newAllMovies
+    allMovies = newAllMovies
   }
 
   return movie
