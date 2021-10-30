@@ -1,5 +1,7 @@
 const MoviesService = require('../services/movies-service')
 
+console.log('MoviesService IDANN', MoviesService)
+
 function getMovies(request, response) {
   let { offset, limit } = request.query
   const allMovies = MoviesService.getAllMovies()

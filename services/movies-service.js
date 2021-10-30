@@ -1,38 +1,36 @@
 const INITIAL_MOVIES = require('./movies.json')
 
-class MoviesService {
-  static getAllMovies() {
-    return [...this.allMovies]
-  }
-
-  static getById(id) {
-    return this.getAllMovies().find((movie) => movie.id === id)
-  }
-
-  static createMovie({ title, img, synopsis, rating, year }) {
-    const newMovie = {
-      id: this.getNextIndex(),
-      title,
-      img,
-      synopsis,
-      rating,
-      year,
-    }
-
-    this.allMovies = [...this.allMovies, newMovie]
-    return newMovie
-  }
-
-  static init() {
-    this.allMovies = [...INITIAL_MOVIES.movies]
-    this.currentIndex = this.allMovies[this.allMovies.length - 1].id
-  }
-
-  static getNextIndex() {
-    return ++this.currentIndex
-  }
+function getAllMovies() {
+  return [...this.allMovies]
 }
 
-MoviesService.init()
+function getById(id) {
+  return this.getAllMovies().find((movie) => movie.id === id)
+}
 
-module.exports = MoviesService
+function createMovie({ title, img, synopsis, rating, year }) {
+  const newMovie = {
+    id: this.getNextIndex(),
+    title,
+    img,
+    synopsis,
+    rating,
+    year,
+  }
+
+  this.allMovies = [...this.allMovies, newMovie]
+  return newMovie
+}
+
+function init() {
+  this.allMovies = [...INITIAL_MOVIES.movies]
+  this.currentIndex = this.allMovies[this.allMovies.length - 1].id
+}
+
+function getNextIndex() {
+  return ++this.currentIndex
+}
+
+init()
+
+module.exports = { getAllMovies, getById, createMovie, init }
