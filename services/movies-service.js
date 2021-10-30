@@ -35,4 +35,4 @@ class MoviesService {
 
 MoviesService.init()
 
-module.exports = { MoviesService }
+module.exports = MoviesService

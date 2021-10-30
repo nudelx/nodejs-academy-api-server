@@ -1,4 +1,4 @@
-const { MoviesService } = require('../services/movies-service')
+const MoviesService = require('../services/movies-service')
 
 function getMovies(request, response) {
   let { offset, limit } = request.query

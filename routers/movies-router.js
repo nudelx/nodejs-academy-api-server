@@ -17,4 +17,4 @@ moviesRouter.put('/', upsertMovie)
 moviesRouter.patch('/:id', modifyMovie)
 moviesRouter.delete('/:id', deleteMovie)
 
-module.exports = { moviesRouter }
+module.exports = moviesRouter
