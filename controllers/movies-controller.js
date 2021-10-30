@@ -1,7 +1,5 @@
 const MoviesService = require('../services/movies-service')
 
-console.log('MoviesService IDANN', MoviesService)
-
 function getMovies(request, response) {
   let { offset, limit } = request.query
   const allMovies = MoviesService.getAllMovies()
@@ -56,67 +54,15 @@ function createMovie(request, response) {
 }
 
 function upsertMovie(request, response) {
-  const { title, img, synopsis, rating, year } = request.body
-
-  if (!title) {
-    return response.status(400).json({ error: 'title is a required body param' })
-  }
-
-  if (!synopsis) {
-    return response.status(400).json({ error: 'synopsis is a required body param' })
-  }
-
-  if (!rating) {
-    return response.status(400).json({ error: 'rating is a required body param' })
-  }
-
-  if (!year) {
-    return response.status(400).json({ error: 'year is a required body param' })
-  }
-
-  const movie = MoviesService.getByTitle(title)
-  const doesMovieExist = !!movie
-
-  if (doesMovieExist) {
-    const updatedMovie = MoviesService.updateMovie(movie.id, { title, img, synopsis, rating, year })
-    return response.status(200).json(updatedMovie)
-  } else {
-    const newMovie = MoviesService.createMovie({ title, img, synopsis, rating, year })
-    return response.status(201).json(newMovie)
-  }
+  return response.status(501).json({ error: 'This method is not implemented yet' })
 }
 
 function modifyMovie(request, response) {
-  const movieId = parseInt(request.params.id, 10)
-  const movie = MoviesService.getById(movieId)
-  const doesMovieExist = !!movie
-
-  if (!doesMovieExist) {
-    return response.status(404).json({ error: `movie with id ${movieId} was not found` })
-  }
-
-  const { title, img, synopsis, rating, year } = request.body
-  const definedParams = {
-    ...(title && { title }),
-    ...(img && { img }),
-    ...(synopsis && { synopsis }),
-    ...(rating && { rating }),
-    ...(year && { year }),
-  }
-  const patchedMovieAtrributes = { ...movie, ...definedParams }
-  const updatedMovie = MoviesService.updateMovie(movie.id, patchedMovieAtrributes)
-  return response.status(200).json(updatedMovie)
+  return response.status(501).json({ error: 'This method is not implemented yet' })
 }
 
 function deleteMovie(request, response) {
-  const movieId = parseInt(request.params.id, 10)
-  const deletedMovie = MoviesService.deleteMovie(movieId)
-
-  if (!deletedMovie) {
-    return response.status(404).json({ error: `movie with id ${movieId} was not found` })
-  }
-
-  return response.status(200).json(deletedMovie)
+  return response.status(501).json({ error: 'This method is not implemented yet' })
 }
 
 module.exports = { getMovies, getById, createMovie, upsertMovie, modifyMovie, deleteMovie }
