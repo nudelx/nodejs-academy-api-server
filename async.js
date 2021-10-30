@@ -15,17 +15,14 @@ const asyncMaker = function (fn) {
 const asyncMakerPromise = function (fn) {
   const delay = getRandomInt(5) * 1000
   return function (cb) {
-
-    return new Promise( function(resolve, reject ) {
+    return new Promise(function (resolve, reject) {
       setTimeout(function () {
         const res = fn()
         resolve(res)
       }, delay)
     })
-
   }
 }
-
 
 // const test1 = function () {
 //   console.log('test 1')
@@ -50,22 +47,22 @@ const asyncMakerPromise = function (fn) {
 // .map((f) => asyncMaker(f))
 // .map((f) => f())
 
-
-
-const getMovie = () => new Promise((yes, no) => {
-  setTimeout(() => yes('movies {...}'), 2000)
-})
-const getActor = () => new Promise((yes, no) => {
-  setTimeout(() => yes('actors {...}'), 3000)
-})
-const getRating = () => new Promise((yes, no) => {
-  setTimeout(() => yes('rating {...}'), 4000)
-})
+const getMovie = () =>
+  new Promise((yes, no) => {
+    setTimeout(() => yes('movies {...}'), 2000)
+  })
+const getActor = () =>
+  new Promise((yes, no) => {
+    setTimeout(() => yes('actors {...}'), 3000)
+  })
+const getRating = () =>
+  new Promise((yes, no) => {
+    setTimeout(() => yes('rating {...}'), 4000)
+  })
 
 const testCb = function () {
-  return 1344 /32
+  return 1344 / 32
 }
-
 
 // const asyncTestWithCb = asyncMaker(testCb)
 
@@ -75,31 +72,32 @@ const testCb = function () {
 
 // const fetchData(url)
 // .then(data => setData(data))  //  or .then(setData)
-// .catch(console.error)    
+// .catch(console.error)
 
-Promise.allSettled([getMovie(), getActor(), getRating()]).then((values) => {
-  console.log(values);
-}).catch(e => {
-  console.log(e)
-})
-  const getData = async function () {
-    const movieId = await getMovie(42)
-    const actorId = await getActor(movieId)
-    const rating  = await getRating(actorId)
-    return [movieId, actorId, rating]
-  }
+Promise.allSettled([getMovie(), getActor(), getRating()])
+  .then((values) => {
+    console.log(values)
+  })
+  .catch((e) => {
+    console.log(e)
+  })
+const getData = async function () {
+  const movieId = await getMovie(42)
+  const actorId = await getActor(movieId)
+  const rating = await getRating(actorId)
+  return [movieId, actorId, rating]
+}
 getMovie(42)
-.then(id => getActor(id)) // .then(getActor)
-.then(id => getRating(id)) // .then(getRating)
-.catch(console.error)
+  .then((id) => getActor(id)) // .then(getActor)
+  .then((id) => getRating(id)) // .then(getRating)
+  .catch(console.error)
 
-
-const test =  async function () { 
-  console.log('this is a test') 
+const test = async function () {
+  console.log('this is a test')
   return 'this is the returned value 42'
 }
 getData()
-.then(data => console.log(data))
-.then(()=> console.log('after'))
-.then(()=> console.log('after after'))
-.then(()=> console.log('after after after'))
+  .then((data) => console.log(data))
+  .then(() => console.log('after'))
+  .then(() => console.log('after after'))
+  .then(() => console.log('after after after'))
