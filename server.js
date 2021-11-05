@@ -57,15 +57,13 @@ app.use( (err, req, res, next) => {
     return next(err)
   }
   errorManagement.handler.handleError(err, res)
-  if(!errorManagement.handler.isTrustedError(error))
-    process.exit(1)
 })
 
-process.on("uncaughtException", error => {
+process.on('uncaughtException', error => {
   errorManagement.handler.handleError(error)
   if(!errorManagement.handler.isTrustedError(error))
     process.exit(1)
-  })
+})
 
 const server = app.listen(8080, () => console.log(`server started on port ${port}`))
 
