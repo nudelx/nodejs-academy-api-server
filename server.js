@@ -1,5 +1,7 @@
 const express = require('express')
 const serverLog = require('./serverLog')
+const moviesRouter = require('./routers/movies-router')
+
 const app = express()
 const port = 8080
 
@@ -17,6 +19,7 @@ app.use(
     extended: true,
   })
 )
+app.use('/movies', moviesRouter)
 
 
 
@@ -49,7 +52,6 @@ app.get('/query', (req, res, next) => {
   })
 })
 
-
 // for Yoni and Idan 
 app.get('/test-error', function (req, res, next) {
   // new Error(message, options, fileName, lineNumber)
@@ -58,4 +60,5 @@ app.get('/test-error', function (req, res, next) {
 
 app.use(myErrHandler)
 
-app.listen(8080, () => console.log(`server started on port ${port}`))
+const server = app.listen(8080, () => console.log(`server started on port ${port}`))
+module.exports = { app, server }

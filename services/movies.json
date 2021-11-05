@@ -1,0 +1,404 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "The Shawshank Redemption",
+      "img": "https://occ-0-2773-2774.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABRtMYpIEbqrYrlxXp8Ezqpv-6_-wa4psAIUoAOJOP8mgH9y7qTi3SYTLfrNgCgNb-qlDfrTHCZ1KkJ-fr4j86xeTHw.jpg?r=d0a",
+      "synopsis": "Framed for murder, upstanding banker Andy Dufresne begins a new life at the Shawshank prison and gradually forms a close bond with older inmate Red.",
+      "rating": 4.481104,
+      "year": 1994
+    },
+    {
+      "id": 2,
+      "title": "The Godfather",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABZVO6ItTejgTusodETTiu3L5xzww2kE-0Jgbore0GiukWNGYQFVAQZcVUkiyoodPWC17iqffeg_QJ8dvX9eh53Jo3Q.jpg?r=bc1",
+      "synopsis": "When an organized-crime family patriarch barely survives an attempt on his life, his youngest son steps in to take care of the would-be killers.",
+      "rating": 4.4095874,
+      "year": 1972
+    },
+    {
+      "id": 3,
+      "title": "The Godfather: Part II",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABaBGRGU8A9knbD8DPrvffwtt7B1IIyACVKG2mjMQExmliJgO11kyqupILKQSBSkajRjdBnvDjU16y91DsO-gAW9Kbw.jpg?r=4ff",
+      "synopsis": "This second film in the trilogy explores the Corleone family roots, tracing Don Vito&#39;s journey from Sicily to a life of organized crime in New York.",
+      "rating": 4.317452,
+      "year": 1974
+    },
+    {
+      "id": 4,
+      "title": "The Dark Knight",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABRtIIrpv2j8ZZwKSo73OJyM_Lt0_h4ZQ_DMKI8rlAM_cer2rZc11hcnaJQZqTNuS3OwxxbdVQijsISgwG59neccd_Q.jpg?r=541",
+      "synopsis": "As Batman, Lt. Gordon and the district attorney continue to dismantle Gotham&#39;s criminal underground, a new villain threatens to undo their good work.",
+      "rating": 4.3107147,
+      "year": 2008
+    },
+    {
+      "id": 5,
+      "title": "Schindler&#39;s List",
+      "img": "https://occ-0-768-769.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABX2lS7rcwWAPowMjaselxLlCzI-5oW9UcQRAzfhs6HjHfZCJLdZa9i57rOiSUwacR0V0TZK54CRqiPVZgY_30lthQw.jpg?r=9fb",
+      "synopsis": "Oskar Schindler becomes an unlikely humanitarian, spending his entire fortune to help save 1,100 Jews from Auschwitz during World War II.",
+      "rating": 4.3853374,
+      "year": 1993
+    },
+    {
+      "id": 6,
+      "title": "The Lord of the Rings: The Return of the King",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABWcSnmfT0EFkFlxlc8YVzWVOyQfFFGO24wRhmGRuc6QwK6lF5pj5zUBoJF3d7dFp2oQDJyD2Ylb0ji4aRRH21jnVlg.jpg?r=726",
+      "synopsis": "Aragorn is revealed as the heir to the ancient kings as he, Gandalf and the other members of the broken fellowship struggle to save Gondor.",
+      "rating": 4.369004,
+      "year": 2003
+    },
+    {
+      "id": 7,
+      "title": "Fiction.",
+      "img": "https://occ-0-3466-3467.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABUzke_EWu_0NKKfOnIPVuFYXIeDcAenwT693vuprO9er8eS_beIinM-Z8up-VJJzVOpocuXGm2nmKyI-nxOR-b5VVw.jpg?r=346",
+      "synopsis": "When a sheltered young woman becomes enamored with a struggling writer, she goes to great lengths to become involved in his creative process.",
+      "rating": 0.0,
+      "year": 2008
+    },
+    {
+      "id": 8,
+      "title": "Pulp Fiction",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABa9-erQzokCNXZhUiHnse_lbCuaScAlkRMU3eqfuDy7_LDrrazXsD1fr-CzKpsRwtl05SAI7WHPR43EXt4pooaS5ig.jpg?r=559",
+      "synopsis": "Quentin Tarantino&#39;s stylized crime caper weaves together stories featuring a burger-loving hit man, his philosophical partner and a washed-up boxer.",
+      "rating": 4.1000714,
+      "year": 1994
+    },
+    {
+      "id": 9,
+      "title": "The Lord of the Rings: The Fellowship of the Ring",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABVIRlafDBWvxdwGtv0DUrIw541tU1MHjlDY_4QLWWqDbum2kvTCGR5LXRy9ApfDSIFbd6T7kYsuDE5XQVKg4oBCJrQ.jpg?r=d14",
+      "synopsis": "From the idyllic shire of the Hobbits to the smoking chasms of Mordor, Frodo Baggins embarks on his epic quest to destroy the ring of Sauron.",
+      "rating": 4.2980127,
+      "year": 2001
+    },
+    {
+      "id": 10,
+      "title": "Fight Club",
+      "img": "http://occ-0-2301-185.1.nflxso.net/art/77a51/576c9ee77b984f15f43a2470735ca98266f77a51.jpg",
+      "synopsis": "An insomniac corporate drone meets roguish rebel Tyler Durden, and together they form a cathartic but brutal underground society.",
+      "rating": 4.0387697,
+      "year": 1999
+    },
+    {
+      "id": 11,
+      "title": "Forrest Gump",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABRAekTxiHnNN-WBJbA_VguGuwJo4z43BoBHWElrlWlZeqe72BChwdjn2I5-0tC6t4KdTsjBWplo8k_yF_q0Tk_0sKg.jpg?r=e02",
+      "synopsis": "Forrest Gump, a friendly, simpleminded man, finds himself in the middle of nearly every major event of the 1960s and &#39;70s.",
+      "rating": 4.3175244,
+      "year": 1994
+    },
+    {
+      "id": 12,
+      "title": "Inception",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABYDAY7Malaj4klMEjUvy1YC7O6JXaUodaDIW2xyYs_huUch4quAuREHvGe6VlIj6o1K3THeI7eKXlBDuS6a-JZH7sw.jpg?r=d87",
+      "synopsis": "In this mindbending sci-fi thriller, a man runs an espionage business built around entering the subconscious of his targets to steal their thoughts.",
+      "rating": 4.0765204,
+      "year": 2010
+    },
+    {
+      "id": 13,
+      "title": "The Lord of the Rings: The Two Towers",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABZLdd7ezvFnqOSJjV92uPBhDznK37kwUH227Wr_HJshqE-poqQb-38KrIQlj4eOCxJ6YM_xULh03A8Hn52gNiMN6oA.jpg?r=59a",
+      "synopsis": "Frodo and Sam head to Mordor to destroy the One Ring of Power while Gimli, Legolas and Aragorn search for the orc-captured Merry and Pippin.",
+      "rating": 4.3208714,
+      "year": 2002
+    },
+    {
+      "id": 14,
+      "title": "The Matrix",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABaqOk9gIL2AhavJ5YauNUyT_jgDiyV5l9nYWEnWSYArhgsxQod55rZQ4IXV4mZzWXOq6PEKVfVSNZ7FpdTsTFsnPuQ.jpg?r=7d5",
+      "synopsis": "A computer hacker learns that what most people perceive as reality is actually a simulation created by machines and joins a rebellion to break free.",
+      "rating": 4.1420937,
+      "year": 1999
+    },
+    {
+      "id": 15,
+      "title": "GoodFellas",
+      "img": "https://occ-0-2717-360.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABQ0Crx6_pAcg-_1yyvkIg74E3O3bLNg6pJo8f5iuarUAsbTQm0uYdZ7mDVo5Zdo_80yEz6qcuOKx_XVtf0lBi54cSQ.jpg?r=f17",
+      "synopsis": "This gripping gangster opus follows real-world mobster Henry Hill, who dreamed of making it big but landed in the Witness Protection Program instead.",
+      "rating": 4.2756805,
+      "year": 1990
+    },
+    {
+      "id": 16,
+      "title": "Seven",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABQNi5gduHV2fu3bx97kg8BGUE_ICWY-iC7ceIl0qj6mT9Q8-798bWyUjUWJltmFX-iI1oOOLj10GuK9UQcqt40XkYg.jpg?r=29a",
+      "synopsis": "A seasoned homicide detective and his new partner are on a desperate hunt for a killer whose gruesome crimes are based on the Seven Deadly Sins.",
+      "rating": 4.1676493,
+      "year": 1995
+    },
+    {
+      "id": 17,
+      "title": "Life Is Beautiful",
+      "img": "https://occ-0-3377-185.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABddjS5NxbZ199364bCFUjCAdNAa_MZ28ZxVeG3Ub5XNWsuxIpmvFH5y-IZ8BFgs7QdTD6b-XqK7RkBYkXnMx21XHAld3g5U.jpg?r=395",
+      "synopsis": "A Jewish waiter, his wife and their son are sent to a concentration camp, where the waiter tries to protect his son&#39;s innocence by playing a game.",
+      "rating": 4.1732583,
+      "year": 1997
+    },
+    {
+      "id": 18,
+      "title": "God&#39;s Little Village",
+      "img": "https://occ-0-2506-1432.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABVvR4lnNcgM4oef5k_s_fHVZzQY2e4vvK8PPi1n8e57FfR_TRgWzjaxA_JGZa9uSqzNZMQl6fD4J8pBDeYafU5msrw.jpg?r=536",
+      "synopsis": "After 20 years, a man returns to his quiet, idyllic hometown in search of a wife only to find the community torn by a heated mayoral election.",
+      "rating": 0.0,
+      "year": 2009
+    },
+    {
+      "id": 19,
+      "title": "Saving Private Ryan",
+      "img": "https://occ-0-768-769.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABeduMox1y_Q6IFJ7qqubedROMAOT28H3_apqMSQhvz9hM8ZU5GVcP3FQbJVb_acDSpAYQslYEPfJsbBdu1RVwc394w.jpg?r=ec3",
+      "synopsis": "Eight U.S. Army Rangers penetrate German-held territory during World War II to find and bring home a soldier whose three brothers have been killed.",
+      "rating": 4.2588506,
+      "year": 1998
+    },
+    {
+      "id": 20,
+      "title": "The Green Mile",
+      "img": "https://occ-0-2042-299.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABRKXWzMgP31mn7jQ0d6ceREEPvK1rBNevrXcAo02LnlswEBfkEQp9Im5QPmpGN5STgvOClAOQt04OOxM-sxvbLx6Kw.jpg?r=d9f",
+      "synopsis": "When a prison guard discovers that a death row inmate possesses mysterious powers, he tries desperately to prevent the condemned man&#39;s execution.",
+      "rating": 4.2639284,
+      "year": 1999
+    },
+    {
+      "id": 21,
+      "title": "Spirited Away",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABaLhxIwy7v4DWacPPt7T2awtflyxqMRpv2zfjIV1dEkym12Z7m7mpyC_2KdlOwP7FQ5mBqQeL6AITEno6X9NAoUpTA.jpg?r=3cf",
+      "synopsis": "Chihiro wanders into a magical world where a witch rules -- and those who disobey her are turned into animals.",
+      "rating": 3.9348145,
+      "year": 2001
+    },
+    {
+      "id": 22,
+      "title": "Interstellar",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABVBQQ3hDCEuZjQ7zv61I7jWgLlcje1Unl2zlUgzvodZAWwdDo1UZLHI8aFqrOyqKFZT5or-xMhApBx3uTEqn-jdHNw.jpg?r=341",
+      "synopsis": "With humanity teetering on the brink of extinction, a group of astronauts travels through a wormhole in search of another inhabitable planet.",
+      "rating": 3.697589,
+      "year": 2014
+    },
+    {
+      "id": 23,
+      "title": "Parasite",
+      "img": "https://occ-0-114-116.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABZzcTnwK5TeugAUGeHosm30nddZKQQ89iOw776PyLZDhH-671YoVJrYPSMbSy3tFi0wD3pFVeCJlRmNiGkUdtGQOHYkf94BkIJWTISjSvYa8jdt1jLCrc_xuM0wDrQ-sHVrOGSWP7Qfy5IH47v8AEz_-Kw.jpg?r=7b7",
+      "synopsis": "One by one, the crafty members of a destitute family insinuate themselves into the household staff of a wealthy couple living in oblivious privilege.",
+      "rating": 0.0,
+      "year": 2019
+    },
+    {
+      "id": 24,
+      "title": "Leon: The Professional",
+      "img": "https://occ-0-114-116.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABbsrSOlJXADmD6jz849Uf1evA_iOG_U5J9hAEYxrXb1so3RAV19qrCR9ByT6iE5l1912XNOOqhhFJygfOiuzTppEkw.jpg?r=7db",
+      "synopsis": "L\u00e9on, a hit man in New York, becomes the unwilling custodian of Mathilda, a vengeful 12-year-old whose family was wiped out by a crooked DEA agent.",
+      "rating": 4.1455116,
+      "year": 1994
+    },
+    {
+      "id": 25,
+      "title": "The Usual Suspects",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABb2dP-xaot04GAJTdCNUTNh2kSBGii7wuuxJCa2yICv4Gs8o6qTJ8ujIfBK5oA3qhM4u2qWsb6OqvisURCjLT-tHyw.jpg?r=fa6",
+      "synopsis": "When five unacquainted crooks are hauled into a police station to appear in a criminal lineup, they decide to pull off a heist together.",
+      "rating": 4.2753973,
+      "year": 1995
+    },
+    {
+      "id": 26,
+      "title": "The Pianist",
+      "img": "https://occ-0-1091-300.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABQPnnhThPWr_u19ajFlcYkYA3CXs7rzNkhZY53-6449ewtY1liJ0XxIUjEf5Gw6c43gpRXAUm00LbKc10WSmSMEBiw.jpg?r=91c",
+      "synopsis": "Famed Polish pianist Wladyslaw Szpilman struggles to survive the onslaught of Nazi tyranny during World War II in this drama based on his memoirs.",
+      "rating": 4.077131,
+      "year": 2002
+    },
+    {
+      "id": 27,
+      "title": "Back to the Future",
+      "img": "https://occ-0-1348-1347.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABX8AN_0v-MMCns2Mg6EybmvhBXp-XQuC064tHHvwYM2mAW8I4NRFEL1XHKnXH1noz3pWDAajwxEIIY3n9suHnFJlXw.jpg?r=db2",
+      "synopsis": "Eccentric inventor Doc Brown turns a DeLorean into a time machine that inadvertently sends his young friend, Marty McFly, 30 years into the past.",
+      "rating": 4.016228,
+      "year": 1985
+    },
+    {
+      "id": 28,
+      "title": "Terminator 2: Judgment Day",
+      "img": "https://occ-0-2773-2774.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABdz44sWUMA37_1RhSoq3uj6kerRjVIxPfTyK1s49_3q3gEyfhESnrPzcYVD_PaqA-PbxyvP6UINtYs-L_rXH6rDEug.jpg?r=c47",
+      "synopsis": "A reprogrammed Terminator arrives from the future to protect young John Connor from a relentless shape-shifting cyborg in this sequel to Terminator.",
+      "rating": 3.921031,
+      "year": 1991
+    },
+    {
+      "id": 29,
+      "title": "Modern Times",
+      "img": "https://occ-0-1007-1360.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABUHJZcDNtY8Rn7mFm5U5CC5jvjQQaduNWOYXg6EoqG_mlimMhXJgjqzSd2rP7L9JMN92xSbCdcRz2AvQ0ttV6tMVyg.jpg?r=4e3",
+      "synopsis": "Conceived and produced as talking pictures were taking Hollywood by storm, Charlie Chaplin&#39;s satire of the machine age was also his last &#39;silent.&#39;",
+      "rating": 3.8555038,
+      "year": 1936
+    },
+    {
+      "id": 30,
+      "title": "Psycho",
+      "img": "https://occ-0-768-769.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABVenV3l_aS7ZfYipU-qlbdvKKTi90WNt8TG-YDa9xyvYFjEfVpCGUpod_0k1iPFzKp0PXq2JYgT2pNJarpEYtGndyA.jpg?r=39e",
+      "synopsis": "When a larcenous real estate clerk goes on the lam with a wad of cash and hopes of starting a new life, she ends up at the notorious Bates Motel.",
+      "rating": 3.8088436,
+      "year": 1960
+    },
+    {
+      "id": 31,
+      "title": "Gladiator",
+      "img": "https://occ-0-531-2705.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABUTGJw8-JSH6-J25j7vDj37bjiN0T6qG2ekgzFh2v0wT0Uq2JueXuKuGkYUEyarbmIBG0PEYniL90WYeDASzVnd4jw.jpg?r=416",
+      "synopsis": "Tapped for the throne after the death of the emperor, a Roman general instead finds himself condemned to die by the late ruler&#39;s power-hungry son.",
+      "rating": 4.265967,
+      "year": 2000
+    },
+    {
+      "id": 32,
+      "title": "The Departed",
+      "img": "https://occ-0-2773-2774.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABZGFqr2fNEIxqjRiradSI86iX-Wzb7iTLad2olYFqc4EyuMQZXm3Newf7IFXpABegMoPqLWN7I8N2nj8wsY_9eKX5A.jpg?r=5fc",
+      "synopsis": "To take down Boston&#39;s Irish Mafia, the police send in one of their own men to infiltrate it, not realizing the syndicate has done the same thing.",
+      "rating": 4.141414,
+      "year": 2006
+    },
+    {
+      "id": 33,
+      "title": "The Intouchables",
+      "img": "https://occ-0-2773-2774.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABQlAvvrFO6oGp2-1olKzaxr8FQaQ5f3g6bXHvoANciSgOhxLSXvwQ9wkjtew10h3qjAKxq3cgw5cEX99x8m2uuL_4Q.jpg?r=27d",
+      "synopsis": "Based on a true story, a quadriplegic aristocrat&#39;s world is turned upside down when he hires a good-humored ex-con as his caretaker.",
+      "rating": 4.461813,
+      "year": 2011
+    },
+    {
+      "id": 34,
+      "title": "Whiplash",
+      "img": "https://occ-0-1926-41.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABUI7YbyRG15XY-DX28123IW_jkbxBrYoL6uDy5x7EaUlDyOE-_6PPinKBvrZfwEb8M2pir38qme_FuDilPN4Ox2hHw.jpg?r=0c5",
+      "synopsis": "Driven by his demanding music teacher, drummer Andrew is determined to succeed as a jazz musician -- even if it destroys his personality.",
+      "rating": 4.0289354,
+      "year": 2014
+    },
+    {
+      "id": 35,
+      "title": "Grave of the Fireflies",
+      "img": "https://occ-0-2717-360.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABSRYP39XufImd6N8_9vOl5k2rwEKoMhez8l0QUMc3ilc_Bo69wM3cPJP9p7ZBbkxZM1BxVF3d4ESfx3TIJr8gDphjA.jpg?r=6e4",
+      "synopsis": "Two orphans fight for survival in post-World War II Japan, but society is harsh and they struggle to escape the hardships of war and find enough food.",
+      "rating": 0.0,
+      "year": 1988
+    },
+    {
+      "id": 36,
+      "title": "The Prestige",
+      "img": "https://occ-0-2773-2774.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABXyVG0AyZSD0e42xgDf-hN5vmXKWtUaE9qJO-mwFKmz00wor3t0iap3_PLy6OPG1lFDY54k7VUH1PLg16i5j5pP13A.jpg?r=868",
+      "synopsis": "Desperate to reveal each other&#39;s secrets, two rival magicians begin to perform increasingly risky tricks -- which soon turn deadly.",
+      "rating": 3.8906362,
+      "year": 2006
+    },
+    {
+      "id": 37,
+      "title": "Cinema Paradiso",
+      "img": "https://occ-0-1007-1360.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABcsJqBmkG7I7VS69QLyweRWAQqP64yW2RC6WF0xzwjtwgeGBs9ks46nePIiZelOK733pQ_LCcCWJSX5eCwWU5RwyBQ.jpg?r=9e7",
+      "synopsis": "When a Sicilian boy is mesmerized by the movies at his local theater, he befriends a projectionist who tells him to leave home and pursue his dreams.",
+      "rating": 4.0295124,
+      "year": 1988
+    },
+    {
+      "id": 38,
+      "title": "Apocalypse Now Redux",
+      "img": "https://occ-0-768-769.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABQVgmk8sn8jkIM9NrMPFT2h0k0CJXz2ddNEDiLeo3l_cS6TzCrH9iqMIDcxEIYTj1NthEOx0vyjE5ia179sAwkT8i3gKnMc.jpg?r=496",
+      "synopsis": "The reedit of this Vietnam War epic that follows an Army captain&#39;s search for a renegade colonel features new footage and a fade-to-black ending.",
+      "rating": 4.1984634,
+      "year": 2001
+    },
+    {
+      "id": 39,
+      "title": "Memento",
+      "img": "https://occ-0-2773-2774.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABXg2UWKRwv3lIMRU4fBLsu3TFRshTBCCUS_c-rWUIkREvzKUpbVsXtIuJWDtykz6IcyhOhsj9JltB8qfuOaTrFUkyg.jpg?r=4ce",
+      "synopsis": "Suffering short-term memory loss after a head injury, Leonard Shelby embarks on a grim quest to find the lowlife who murdered his wife.",
+      "rating": 3.7576146,
+      "year": 2000
+    },
+    {
+      "id": 40,
+      "title": "The Great Dictator",
+      "img": "https://occ-0-1007-1360.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABfQ22uOUvcsirWeqmKMR9-bRYFca26NAvYfKsWPX6ADV0ooLXgILjWleZinntiWgbbnJt0Thm48ATB_YndCpXrmlQA.jpg?r=c96",
+      "synopsis": "When Tomania&#39;s anti-Semitic ruler cracks down on the Jews, a case of mistaken identity gives an amnesiac barber the chance to plea for democracy.",
+      "rating": 3.8172212,
+      "year": 1940
+    },
+    {
+      "id": 41,
+      "title": "Indiana Jones and the Raiders of the Lost Ark",
+      "img": "https://occ-0-2717-360.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABR1xbg83TE-2oltihpLlxzk54uL1kiJVR7DI7EDBnWHhdR6W9av4ykSyvBWX8HOfocDynZmwNRFRCPdMF1Z3z180qA.jpg?r=462",
+      "synopsis": "When Indiana Jones is hired by the government to locate the legendary Ark of the Covenant, he finds himself up against the entire Nazi regime.",
+      "rating": 4.288084,
+      "year": 1981
+    },
+    {
+      "id": 42,
+      "title": "Django Unchained",
+      "img": "https://occ-0-2773-2774.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABRzu4DL2MtiqQ5egSaSDjayUusS8MOLcS3agy0c7Eapj1XsnMdBz2uqyWJ9HCzJylloiwZm6Z0pDwYB1kTSOT55ZSg.jpg?r=3c6",
+      "synopsis": "Accompanied by a German bounty hunter, a freed slave named Django travels across America to free his wife from a sadistic plantation owner.",
+      "rating": 4.32715,
+      "year": 2012
+    },
+    {
+      "id": 43,
+      "title": "The Lives of Others",
+      "img": "https://occ-0-2773-2774.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABWv_D5deyDLg4_PQ26UhNPXRlonhIxkQXqGtWpbwsOO3iPJKY2USLPWZu42XNJ3T5cb-csmbzkbIbgUN5h2g5FOQMg.jpg?r=0df",
+      "synopsis": "As a secret police agent eavesdrops on a successful writer in East Germany in 1984, he becomes increasingly fascinated by the man&#39;s life and politics.",
+      "rating": 4.0410433,
+      "year": 2006
+    },
+    {
+      "id": 44,
+      "title": "Joker",
+      "img": "https://occ-0-1007-1360.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABc3CMFhKOaUodYjPAVnvhCNMF2Hw9tHTfhQ6vWhvtwCIh7BTfws2r9wQt_kFRCOnRUgRKTV1iC2uXh23U6E-qkiM4w.jpg?r=190",
+      "synopsis": "In 1981 Gotham City, a struggling, mentally ill comic battles to be seen. His life takes a dark, gut-wrenching turn after he lashes back at attackers.",
+      "rating": 0.0,
+      "year": 2019
+    },
+    {
+      "id": 45,
+      "title": "The Shining",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABcNdCqy9i7O8pyrL7xpJX7cMp-iOwHtarZpqJYsyYB_PqGxJZtojBFIkfB7-a68BlA7ZKU1uYceUcZG61tH2DqdXKg.jpg?r=c18",
+      "synopsis": "Jack Torrance descends into madness -- terrorizing his wife and young son -- after living at a deserted and eerie hotel during its off season.",
+      "rating": 3.9555097,
+      "year": 1980
+    },
+    {
+      "id": 46,
+      "title": "Oldboy",
+      "img": "https://occ-0-1007-1360.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABbi2N9Ado7qhSItCo-bQsCOQqqVbhhgc6xwCaQq-F9XF84b6HszeHg9RHnbuhLE_slSR2sAY33cPfc-dmJ5iAUNDWw.jpg?r=492",
+      "synopsis": "With no clue how he came to be imprisoned, drugged and tortured for 15 years, a desperate businessman seeks revenge on his captors.",
+      "rating": 3.9551542,
+      "year": 2003
+    },
+    {
+      "id": 47,
+      "title": "Princess Mononoke",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABXG1cmNXqV9j4WM9yOYdCwGqUzIFxCICC1ivxu4gKt8-vB_ayYHD2Nv4SEDHqkeNyPnDRl8sa5dFf2fxNK1vj2Blng.jpg?r=2f0",
+      "synopsis": "A prince infected with a lethal curse sets off to find a cure and lands in the middle of a battle between a mining town and the animals of the forest.",
+      "rating": 4.034092,
+      "year": 1997
+    },
+    {
+      "id": 48,
+      "title": "Spider-Man: Into the Spider-Verse",
+      "img": "https://occ-0-768-769.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABf_gF_rbRDin_WkNoaWOr61QV53dlaErmov1Cu90QaZfHKdDLAAP_7Ir4PwbJte00shYyoVgiSmheYbI6lc_z5dQZQ.jpg?r=ef7",
+      "synopsis": "After being bitten by a radioactive spider, Brooklyn teen Miles Morales gets a crash course in web-slinging from his alternate-dimension counterparts.",
+      "rating": 0.0,
+      "year": 2018
+    },
+    {
+      "id": 49,
+      "title": "Dr. Strangelove",
+      "img": "https://occ-0-299-300.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAAAVhx-11biDyDG4UTp-QSOGVQtRpMjtCzPyMM0SDxgCDIrbVYryise0F7AYG3hj_VUVcIAbvTemibfkR_6x2UiQuiYNrRiWA.jpg?r=470",
+      "synopsis": "When a fanatical U.S. general launches an air strike against the Soviets, they raise the stakes by threatening to unleash a &#39;doomsday device.&#39;",
+      "rating": 3.9412968,
+      "year": 1964
+    },
+    {
+      "id": 50,
+      "title": "The Dark Knight Rises",
+      "img": "https://occ-0-2851-38.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABWjtaF9sJnhHvBmXFSMp2ds1PUCNk4tNzXr04ypeW5UK5DeWTIGDVWNPJaiTL5oH7-Ct_jY39_WuYq57miAeCftRew.jpg?r=bd7",
+      "synopsis": "Billionaire Bruce Wayne must once again don the cape of his alter ego, Batman, when Gotham is threatened by new foes such as Catwoman and Bane.",
+      "rating": 4.1827297,
+      "year": 2012
+    }
+  ]
+}
