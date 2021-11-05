@@ -3,7 +3,6 @@ const serverLog = require('./serverLog')
 const addDate = require('./middleware/addDate')
 const addResponseHeader = require('./middleware/addResponseHeader')
 const moviesRouter = require('./routers/movies-router')
-const errorManagement = require('./errors/error-handler')
 
 const app = express()
 const port = 8080
@@ -56,12 +55,12 @@ app.use( (err, req, res, next) => {
   if (res && res.headersSent) {
     return next(err)
   }
-  errorManagement.handler.handleError(err, res)
+  return res.status(err.statusCode).json({ error: err.message })
 })
 
 process.on('uncaughtException', error => {
-  errorManagement.handler.handleError(error)
-  if(!errorManagement.handler.isTrustedError(error))
+  res.status(error.statusCode).json({ error: err.message })
+  if(!error.isOperational)
     process.exit(1)
 })
 
