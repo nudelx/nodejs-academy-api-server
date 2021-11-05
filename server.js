@@ -15,6 +15,7 @@ app.use(
     extended: true,
   })
 )
+
 app.use('/movies', moviesRouter)
 
 app.get('/', (req, res, next) => {
