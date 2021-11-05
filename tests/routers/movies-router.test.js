@@ -46,6 +46,9 @@ describe('Movies Controller', () => {
     context('when id of movie doesnt exist', () => {
       it('should return status code 404', async () => {
         const response = await supertest(app).get('/movies/999').expect(404)
+
+        expect(response.body).to.exist
+        expect(response.body.error).to.eq(`no movie with id 999`)
       })
     })
   })
@@ -137,6 +140,9 @@ describe('Movies Controller', () => {
     context('when id of movie doesnt exist', () => {
       it('should return status code 404', async () => {
         await supertest(app).patch('/movies/999').send({}).expect(404)
+
+        expect(response.body).to.exist
+        expect(response.body.error).to.eq(`no movie with id 999`)
       })
     })
 
@@ -167,6 +173,9 @@ describe('Movies Controller', () => {
     context('when id of movie doesnt exist', () => {
       it('should return status code 404', async () => {
         await supertest(app).delete('/movies/999').send({}).expect(404)
+
+        expect(response.body).to.exist
+        expect(response.body.error).to.eq(`no movie with id 999`)
       })
     })
 
