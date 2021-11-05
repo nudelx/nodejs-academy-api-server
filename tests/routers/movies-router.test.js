@@ -51,25 +51,38 @@ describe('Movies Controller', () => {
   })
 
   describe('POST /movies', function () {
-    it('should create a new movie object', async function () {
-      const lastId = INITIAL_MOVIES.movies[INITIAL_MOVIES.movies.length - 1].id
-
-      const newMovieDetails = {
-        title: 'new movie title',
-        img: 'new movie img',
-        synopsis: 'new movie synopsis',
-        rating: 5,
-        year: 2021,
-      }
-      const response = await supertest(app).post('/movies').send(newMovieDetails).expect(201)
-
-      expect(response.body).to.exist
-      expect(response.body.id).to.be.greaterThan(lastId)
-      expect(response.body.title).to.eq(newMovieDetails.title)
-      expect(response.body.img).to.eq(newMovieDetails.img)
-      expect(response.body.synopsis).to.eq(newMovieDetails.synopsis)
-      expect(response.body.rating).to.eq(newMovieDetails.rating)
-      expect(response.body.year).to.eq(newMovieDetails.year)
+    context('when this is a valid new movie', () => {
+      it('should create a new movie object', async function () {
+        const lastId = INITIAL_MOVIES.movies[INITIAL_MOVIES.movies.length - 1].id
+  
+        const newMovieDetails = {
+          title: 'new movie title',
+          img: 'new movie img',
+          synopsis: 'new movie synopsis',
+          rating: 5,
+          year: 2021,
+        }
+        const response = await supertest(app).post('/movies').send(newMovieDetails).expect(201)
+  
+        expect(response.body).to.exist
+        expect(response.body.id).to.be.greaterThan(lastId)
+        expect(response.body.title).to.eq(newMovieDetails.title)
+        expect(response.body.img).to.eq(newMovieDetails.img)
+        expect(response.body.synopsis).to.eq(newMovieDetails.synopsis)
+        expect(response.body.rating).to.eq(newMovieDetails.rating)
+        expect(response.body.year).to.eq(newMovieDetails.year)
+      })
+    })
+    context('when this is an invalid movie object', () => {
+      it('should return InvalidMovieParamError', async function () {
+        const lastId = INITIAL_MOVIES.movies[INITIAL_MOVIES.movies.length - 1].id
+  
+        const newMovieDetails = {}
+        const response = await supertest(app).post('/movies').send(newMovieDetails).expect(400)
+  
+        expect(response.body).to.exist
+        expect(response.body.error).to.exist
+      })
     })
   })
 

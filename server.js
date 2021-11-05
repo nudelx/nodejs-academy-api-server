@@ -3,7 +3,7 @@ const serverLog = require('./serverLog')
 const addDate = require('./middleware/addDate')
 const addResponseHeader = require('./middleware/addResponseHeader')
 const moviesRouter = require('./routers/movies-router')
-const errorHandler = require('./errors/error-handler')
+const errorManagement = require('./errors/error-handler')
 
 const app = express()
 const port = 8080
@@ -52,13 +52,20 @@ app.post('/', (req, res, next) => {
   })
 })
 
-app.use((err, req, res, next) => {
-  errorHandler.handleError(err, res)
+app.use( (err, req, res, next) => {
+  if (res && res.headersSent) {
+    return next(err)
+  }
+  errorManagement.handler.handleError(err, res)
+  if(!errorManagement.handler.isTrustedError(error))
+    process.exit(1)
 })
 
 process.on("uncaughtException", error => {
-  errorHandler.handleError(error)
-})
+  errorManagement.handler.handleError(error)
+  if(!errorManagement.handler.isTrustedError(error))
+    process.exit(1)
+  })
 
 const server = app.listen(8080, () => console.log(`server started on port ${port}`))
 

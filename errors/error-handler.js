@@ -1,14 +1,12 @@
 
 function errorHandler() {
   this.handleError = (err, res) => {
-    if (res && res.headersSent) {
-      return next(err)
-    }
-    if (res.isOperational && res) {
+    if (res) {
       return res.status(err.statusCode).json({ error: err.message })
     }
-    process.exit(1)
+  }
+  this.isTrustedError = (error) => {
+    return error.isOperational
   }
 }
-
 module.exports.handler = new errorHandler()
