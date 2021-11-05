@@ -1,3 +1,4 @@
+const InvalidMovieParamError = require('../errors/InvalidMovieParamError')
 const MoviesService = require('../services/movies-service')
 
 function getMovies(request, response) {
@@ -30,46 +31,46 @@ function getById(request, response) {
   }
 }
 
-function createMovie(request, response) {
+function createMovie(request, response, next) {
   const { title, img, synopsis, rating, year } = request.body
 
   if (!title) {
-    return response.status(400).json({ error: 'title is a required body param' })
+    return next(new InvalidMovieParamError('title is a required body param'))
   }
 
   if (!synopsis) {
-    return response.status(400).json({ error: 'synopsis is a required body param' })
+    return next(new InvalidMovieParamError('synopsis is a required body param'))
   }
 
   if (!rating) {
-    return response.status(400).json({ error: 'rating is a required body param' })
+    return next(new InvalidMovieParamError('rating is a required body param'))
   }
 
   if (!year) {
-    return response.status(400).json({ error: 'year is a required body param' })
+    return next(new InvalidMovieParamError('year is a required body param'))
   }
 
   const newMovie = MoviesService.createMovie({ title, img, synopsis, rating, year })
   return response.status(201).json(newMovie)
 }
 
-function upsertMovie(request, response) {
+function upsertMovie(request, response, next) {
   const { title, img, synopsis, rating, year } = request.body
 
   if (!title) {
-    return response.status(400).json({ error: 'title is a required body param' })
+    return next(new InvalidMovieParamError('title is a required body param'))
   }
 
   if (!synopsis) {
-    return response.status(400).json({ error: 'synopsis is a required body param' })
+    return next(new InvalidMovieParamError('synopsis is a required body param'))
   }
 
   if (!rating) {
-    return response.status(400).json({ error: 'rating is a required body param' })
+    return next(new InvalidMovieParamError('rating is a required body param'))
   }
 
   if (!year) {
-    return response.status(400).json({ error: 'year is a required body param' })
+    return next(new InvalidMovieParamError('year is a required body param'))
   }
 
   const movie = MoviesService.getByTitle(title)
