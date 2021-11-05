@@ -1,13 +1,13 @@
 const express = require('express')
 const serverLog = require('./serverLog')
 const addDate = require('./middleware/addDate')
+const addResponseHeader = require('./middleware/addResponseHeader')
 const moviesRouter = require('./routers/movies-router')
 
 const app = express()
 const port = 8080
 
-app.use(serverLog)
-app.use(addDate)
+app.use(serverLog, addDate, addResponseHeader)
 
 app.use(express.json())
 app.use(
