@@ -49,20 +49,28 @@ const asyncMakerPromise = function (fn) {
 
 const getMovie = () =>
   new Promise((yes, no) => {
-    setTimeout(() => yes('movies {...}'), 2000)
+    setTimeout(() => yes('movies {...}'), 1000)
   })
 const getActor = () =>
   new Promise((yes, no) => {
-    setTimeout(() => yes('actors {...}'), 3000)
+    setTimeout(() => yes('actors {...}'), 2000)
   })
 const getRating = () =>
   new Promise((yes, no) => {
-    setTimeout(() => yes('rating {...}'), 4000)
+    setTimeout(() => no('rating {...}'), 3000)
   })
 
-const testCb = function () {
-  return 1344 / 32
-}
+// const testCb = function () {
+//   return 1344 / 32
+// }
+
+console.log('start')
+const a = [getMovie(), getActor(), getRating()]
+Promise.allSettled(a)
+.then(console.log)
+.catch(e => console.log('error', e))
+
+console.log('end')
 
 // const asyncTestWithCb = asyncMaker(testCb)
 
@@ -74,30 +82,45 @@ const testCb = function () {
 // .then(data => setData(data))  //  or .then(setData)
 // .catch(console.error)
 
-Promise.allSettled([getMovie(), getActor(), getRating()])
-  .then((values) => {
-    console.log(values)
-  })
-  .catch((e) => {
-    console.log(e)
-  })
-const getData = async function () {
-  const movieId = await getMovie(42)
-  const actorId = await getActor(movieId)
-  const rating = await getRating(actorId)
-  return [movieId, actorId, rating]
-}
-getMovie(42)
-  .then((id) => getActor(id)) // .then(getActor)
-  .then((id) => getRating(id)) // .then(getRating)
-  .catch(console.error)
+// Promise.allSettled([getMovie(), getActor(), getRating()])
+//   .then((values) => {
+//     console.log(values)
+//   })
+//   .catch((e) => {
+//     console.log(e)
+//   })
+// const getData = async function () {
+//   const movieId = await getMovie(42)
+//   const actorId = await getActor(movieId)
+//   const rating = await getRating(actorId)
+//   return [movieId, actorId, rating]
+// }
+// getMovie(42)
+//   .then((id) => getActor(id)) // .then(getActor)
+//   .then((id) => getRating(id)) // .then(getRating)
+//   .catch(console.error)
 
-const test = async function () {
-  console.log('this is a test')
-  return 'this is the returned value 42'
+// const test = async function () {
+//   console.log('this is a test')
+//   return 'this is the returned value 42'
+// }
+// getData()
+//   .then((data) => console.log(data))
+//   .then(() => console.log('after'))
+//   .then(() => console.log('after after'))
+//   .then(() => console.log('after after after'))
+
+function checkMail() {
+  return new Promise((yes, no) => {
+    Math.random() > 0.5 
+      ? yes('Mail has arrived') 
+      : no(new Error('Failed to arrive'))
+  })
 }
-getData()
-  .then((data) => console.log(data))
-  .then(() => console.log('after'))
-  .then(() => console.log('after after'))
-  .then(() => console.log('after after after'))
+
+checkMail()
+  .then(console.log)
+  .catch(console.error)
+  .finally(() => {
+    console.log('Experiment completed');
+  })
