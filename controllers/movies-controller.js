@@ -35,19 +35,19 @@ function createMovie(request, response, next) {
   const { title, img, synopsis, rating, year } = request.body
 
   if (!title) {
-    return next(new InvalidMovieParamError('title is a required body param'))
+    return next(InvalidMovieParamError('title is a required body param'))
   }
 
   if (!synopsis) {
-    return next(new InvalidMovieParamError('synopsis is a required body param'))
+    return next(InvalidMovieParamError('synopsis is a required body param'))
   }
 
   if (!rating) {
-    return next(new InvalidMovieParamError('rating is a required body param'))
+    return next(InvalidMovieParamError('rating is a required body param'))
   }
 
   if (!year) {
-    return next(new InvalidMovieParamError('year is a required body param'))
+    return next(InvalidMovieParamError('year is a required body param'))
   }
 
   const newMovie = MoviesService.createMovie({ title, img, synopsis, rating, year })
@@ -58,19 +58,19 @@ function upsertMovie(request, response, next) {
   const { title, img, synopsis, rating, year } = request.body
 
   if (!title) {
-    return next(new InvalidMovieParamError('title is a required body param'))
+    return next(InvalidMovieParamError('title is a required body param'))
   }
 
   if (!synopsis) {
-    return next(new InvalidMovieParamError('synopsis is a required body param'))
+    return next(InvalidMovieParamError('synopsis is a required body param'))
   }
 
   if (!rating) {
-    return next(new InvalidMovieParamError('rating is a required body param'))
+    return next(InvalidMovieParamError('rating is a required body param'))
   }
 
   if (!year) {
-    return next(new InvalidMovieParamError('year is a required body param'))
+    return next(InvalidMovieParamError('year is a required body param'))
   }
 
   const movie = MoviesService.getByTitle(title)
