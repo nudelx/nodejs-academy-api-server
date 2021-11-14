@@ -12,8 +12,9 @@ fs.readdirSync(path.join(__dirname, 'models'))
     const model = require(modelPath)
     models[model.modelName] = model
   })
+
 const connect = async () => {
-  const { DB_USER, DB_PATH} = process.env
+  const { DB_USER, DB_PATH } = process.env
   try {
     await mongoose.connect(
       `mongodb+srv://${DB_USER}:${DB_PATH}@cluster0.bb7jy.mongodb.net/moviesDb?retryWrites=true&w=majority`
