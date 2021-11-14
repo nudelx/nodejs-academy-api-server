@@ -1,10 +1,10 @@
 const express = require('express')
 const serverLog = require('./serverLog')
 const moviesRouter = require('./routers/movies-router')
+const db = require('./db/index')
 
 const app = express()
 const port = 8080
-
 
 const myErrHandler = function (err, req, res, next) {
   console.log('SOME ERROR ACCRUED')
@@ -60,5 +60,5 @@ app.get('/test-error', function (req, res, next) {
 
 app.use(myErrHandler)
 
-const server = app.listen(8080, () => console.log(`server started on port ${port}`))
+const server = app.listen(8080, () => console.log(` 🚀 server started on port ${port}`))
 module.exports = { app, server }
