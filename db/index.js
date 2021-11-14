@@ -12,14 +12,15 @@ fs.readdirSync(path.join(__dirname, 'models'))
     const model = require(modelPath)
     models[model.modelName] = model
   })
-
 const connect = async () => {
+  const { DB_USER, DB_PATH} = process.env
   try {
     await mongoose.connect(
-      'mongodb+srv://user:mongo2020@cluster0.bb7jy.mongodb.net/moviesDb?retryWrites=true&w=majority'
+      `mongodb+srv://${DB_USER}:${DB_PATH}@cluster0.bb7jy.mongodb.net/moviesDb?retryWrites=true&w=majority`
     )
-    console.log(` 🍃  mongo-db connected`)
+    console.log(` 🍃 mongo-db connected`)
 
+    // example of new movie record
     const newMovie = models.Movie({
       title: 'StarWars',
       img: 'https://m.media-amazon.com/images/M/MV5BYTRhNjcwNWQtMGJmMi00NmQyLWE2YzItODVmMTdjNWI0ZDA2XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg',
@@ -28,6 +29,7 @@ const connect = async () => {
       rating: 6.5111,
       year: 1999,
     })
+    // newMovie.save()
   } catch (e) {
     console.log(e)
   }
