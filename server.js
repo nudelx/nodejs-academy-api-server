@@ -25,27 +25,30 @@ app.get('/', (req, res, next) => {
   })
 })
 
-app.get('/query', (req, res, next) => {
-  console.log(req.query)
-  const { test } = req.query
-  // do what we need with the param
-  res.status(200).json({
-    queryParams: req.query,
+app
+  .get('/query', (req, res, next) => {
+    console.log(req.query)
+    const { test } = req.query
+    // do what we need with the param
+    res.status(200).json({
+      queryParams: req.query,
+    })
   })
-}).get('/query/test/:number', (req, res, next) => {
-  console.log(req.params)
-  const { test } = req.query
-  // do what we need with the param
-  res.status('200').json({
-    params: req.params,
+  .get('/query/test/:number', (req, res, next) => {
+    console.log(req.params)
+    const { test } = req.query
+    // do what we need with the param
+    res.status('200').json({
+      params: req.params,
+    })
   })
-}).post('/', (req, res, next) => {
-  console.log(req.body)
-  const { data } = req.body
-  res.status(200).json({
-    received: data,
+  .post('/', (req, res, next) => {
+    console.log(req.body)
+    const { data } = req.body
+    res.status(200).json({
+      received: data,
+    })
   })
-})
 
 app.use((err, req, res, next) => {
   if (res && res.headersSent) {
