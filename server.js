@@ -1,8 +1,8 @@
+require('dotenv').config()
 const express = require('express')
 const serverLog = require('./serverLog')
 const moviesRouter = require('./routers/movies-router')
-const db = require('./db/index')
-
+require('./db/index')
 const app = express()
 const port = 8080
 
