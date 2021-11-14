@@ -3,11 +3,12 @@ const serverLog = require('./serverLog')
 const addDate = require('./middleware/addDate')
 const addResponseHeader = require('./middleware/addResponseHeader')
 const moviesRouter = require('./routers/movies-router')
+const db = require('./db/index')
 
 const app = express()
 const port = 8080
 
-app.use(serverLog, addDate, addResponseHeader)
+app.use(serverLog)
 
 app.use(express.json())
 app.use(
@@ -46,11 +47,16 @@ app.get('/query', (req, res, next) => {
   })
 })
 
-app.use( (err, req, res, next) => {
+app.use((err, req, res, next) => {
   if (res && res.headersSent) {
     return next(err)
   }
-  return res.status(err.statusCode).json({ error: err.message })
+  if (err.statusCode) {
+    res.status(err.status)
+  } else {
+    res.status(500)
+  }
+  return res.json({ error: err.message })
 })
 
 const server = app.listen(8080, () => console.log(`server started on port ${port}`))
