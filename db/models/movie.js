@@ -11,6 +11,7 @@ const { Schema } = mongoose
 // Mixed
 
 // https://mongoosejs.com/docs/api.html#schema_Schema.Types
+
 const movieSchema = new Schema({
     title: String, // {type: String}
     img: String,
