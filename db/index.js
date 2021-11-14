@@ -25,7 +25,7 @@ const connect = async () => {
   //   )
   //   console.log(` 🍃 mongo-db connected`)
 
-    mongoose.connect(
+    return mongoose.connect(
       `mongodb+srv://${DB_USER}:${DB_PATH}@cluster0.bb7jy.mongodb.net/moviesDb?retryWrites=true&w=majority`
     ).then(() => console.log(` 🍃 mongo-db connected`))
      .catch( console.log)
