@@ -8,6 +8,7 @@ const moviesRouter = require('./routers/movies-router')
 
 const app = express()
 const port = 8080
+app.use(serverLog)
 app.use(express.json())
 app.use(
   express.urlencoded({
@@ -48,10 +49,14 @@ app
     })
   })
 
-
-app.use( (err, req, res, next) => {
+  
+app.use((err, req, res, next) => {
   if (res && res.headersSent) {
     return next(err)
+  }
+
+  if (!err.statusCode) {
+    err.statusCode = 500
   }
   return res.status(err.statusCode).json({ error: err.message })
 })
