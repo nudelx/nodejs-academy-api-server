@@ -1,0 +1,52 @@
+const mongoose = require('mongoose')
+const fs = require('fs')
+const path = require('path')
+const basename = path.basename(__filename)
+const models = {}
+
+fs.readdirSync(path.join(__dirname, 'models'))
+  .filter((file) => file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js')
+  .forEach((file) => {
+    const modelPath = path.join(__dirname, 'models', file)
+    console.log(` 🍃 Loading - DB::MODEL::${modelPath}`)
+    const model = require(modelPath)
+    models[model.modelName] = model
+  })
+
+const connect = async () => {
+  try {
+    await mongoose.connect(
+      'mongodb+srv://user:mongo2020@cluster0.bb7jy.mongodb.net/moviesDb?retryWrites=true&w=majority'
+    )
+    console.log(` 🍃  mongo-db connected`)
+
+    const newMovie = models.Movie({
+      title: 'StarWars',
+      img: 'https://m.media-amazon.com/images/M/MV5BYTRhNjcwNWQtMGJmMi00NmQyLWE2YzItODVmMTdjNWI0ZDA2XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg',
+      synopsis:
+        'Two Jedi escape a hostile blockade to find allies and come across a young boy who may bring balance to the Force, but the long dormant Sith resurface to claim their original glory.',
+      rating: 6.5111,
+      year: 1999,
+    })
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+const loadAllData = function (moviesJson) {
+  const { Movie } = models
+  if (Array.isArray(moviesJson)) {
+    Movie.collection
+      .deleteMany({})
+      .then(console.log)
+      .then(Movie.collection.insertMany(moviesJson))
+      .then(() => console.log(' 🍃  db reset done '))
+      .catch(console.log)
+  } else {
+    throw new Error('Movie::Insert expected moviesJson to be array of movies')
+  }
+}
+
+connect()
+
+module.exports = { db: mongoose, ...models, connect, loadAllData }
