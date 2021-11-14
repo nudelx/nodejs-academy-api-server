@@ -6,13 +6,14 @@ const {
   upsertMovie,
   modifyMovie,
   deleteMovie,
+  validate,
 } = require('../controllers/movies-controller')
 
 const moviesRouter = express.Router()
 
 moviesRouter.get('/', getMovies)
 moviesRouter.get('/:id', getById)
-moviesRouter.post('/', createMovie)
+moviesRouter.post('/', validate('createMovie'), createMovie)
 moviesRouter.put('/', upsertMovie)
 moviesRouter.patch('/:id', modifyMovie)
 moviesRouter.delete('/:id', deleteMovie)

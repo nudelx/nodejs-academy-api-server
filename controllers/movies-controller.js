@@ -1,4 +1,5 @@
 const MoviesService = require('../services/movies-service')
+const { body, validationResult } = require('express-validator')
 
 function getMovies(request, response) {
   let { offset, limit } = request.query
@@ -31,23 +32,13 @@ function getById(request, response) {
 }
 
 function createMovie(request, response) {
+  const errors = validationResult(request); // Finds the validation errors in this request and wraps them in an object with handy functions
+
+  if (!errors.isEmpty()) {
+    response.status(422).json({ errors: errors.array() });
+    return;
+  }
   const { title, img, synopsis, rating, year } = request.body
-
-  if (!title) {
-    return response.status(400).json({ error: 'title is a required body param' })
-  }
-
-  if (!synopsis) {
-    return response.status(400).json({ error: 'synopsis is a required body param' })
-  }
-
-  if (!rating) {
-    return response.status(400).json({ error: 'rating is a required body param' })
-  }
-
-  if (!year) {
-    return response.status(400).json({ error: 'year is a required body param' })
-  }
 
   const newMovie = MoviesService.createMovie({ title, img, synopsis, rating, year })
   return response.status(201).json(newMovie)
@@ -117,4 +108,18 @@ function deleteMovie(request, response) {
   return response.status(200).json(deletedMovie)
 }
 
-module.exports = { getMovies, getById, createMovie, upsertMovie, modifyMovie, deleteMovie }
+function validate(method) {
+  switch(method) {
+    case 'createMovie': {
+      return [
+        body('title', 'title doesn\'t exists').exists().isString().escape(),
+        body('img', 'img is not exists or not valid url').exists().isURL(),
+        body('synopsis', 'synopsis doesn\'t exists').exists().isString().escape(),
+        body('rating', 'rating doesn\'t exists or not numeric').exists().isNumeric(),
+        body('year', 'year doesn\'t exists or not numeric').exists().isNumeric(),
+      ]
+    }
+  }
+}
+
+module.exports = { getMovies, getById, createMovie, upsertMovie, modifyMovie, deleteMovie, validate }
