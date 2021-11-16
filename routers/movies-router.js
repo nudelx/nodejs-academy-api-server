@@ -1,4 +1,6 @@
 const express = require('express')
+const checkLegalID = require('../middleware/checkLegalID')
+
 const {
   getMovies,
   getById,
@@ -11,10 +13,10 @@ const {
 const moviesRouter = express.Router()
 
 moviesRouter.get('/', getMovies)
-moviesRouter.get('/:id', getById)
+moviesRouter.get('/:id', checkLegalID, getById)
 moviesRouter.post('/', createMovie)
 moviesRouter.put('/', upsertMovie)
-moviesRouter.patch('/:id', modifyMovie)
-moviesRouter.delete('/:id', deleteMovie)
+moviesRouter.patch('/:id', checkLegalID, modifyMovie)
+moviesRouter.delete('/:id', checkLegalID, deleteMovie)
 
 module.exports = moviesRouter
