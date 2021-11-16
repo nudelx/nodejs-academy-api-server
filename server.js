@@ -23,7 +23,6 @@ app.use(
     extended: true,
   })
 )
-app.use(serverLog)
 app.use('/movies', moviesRouter)
 
 
@@ -70,14 +69,6 @@ process.on('uncaughtException', error => {
     process.exit(1)
 })
 
-
-// // for Yoni and Idan 
-// app.get('/test-error', function (req, res, next) {
-//   // new Error(message, options, fileName, lineNumber)
-//   throw new Error('New error message', {cause : "You shall not pass"})
-// })
-
-// app.use(myErrHandler)
 
 const server = app.listen(8080, () => console.log(`server started on port ${port}`))
 module.exports = { app, server }
