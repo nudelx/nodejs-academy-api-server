@@ -70,7 +70,6 @@ process.on('uncaughtException', error => {
     process.exit(1)
 })
 
-const server = app.listen(8080, () => console.log(`server started on port ${port}`))
 
 // // for Yoni and Idan 
 // app.get('/test-error', function (req, res, next) {
