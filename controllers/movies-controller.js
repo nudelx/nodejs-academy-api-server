@@ -27,7 +27,7 @@ function getById(request, response) {
   if (!!movie) {
     return response.status(200).json(movie)
   } else {
-    return response.status(404).json({ error: `movie with id ${movieId} was not found` })
+    return response.status(404).json({ error: `no movie with id ${movieId}` })
   }
 }
 
@@ -91,7 +91,7 @@ function modifyMovie(request, response) {
   const doesMovieExist = !!movie
 
   if (!doesMovieExist) {
-    return response.status(404).json({ error: `movie with id ${movieId} was not found` })
+    return response.status(404).json({ error: `no movie with id ${movieId}` })
   }
 
   const { title, img, synopsis, rating, year } = request.body
@@ -112,7 +112,7 @@ function deleteMovie(request, response) {
   const deletedMovie = MoviesService.deleteMovie(movieId)
 
   if (!deletedMovie) {
-    return response.status(404).json({ error: `movie with id ${movieId} was not found` })
+    return response.status(404).json({ error: `no movie with id ${movieId}` })
   }
 
   return response.status(200).json(deletedMovie)
