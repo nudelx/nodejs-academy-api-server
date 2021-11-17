@@ -8,11 +8,13 @@ async function getAllMovies() {
 }
 
 async function getById(id) {
-  return getAllMovies().find((movie) => movie.id === id)
+  const movies = await getAllMovies()
+  return movies.find((movie) => movie.id === id)
 }
 
 async function getByTitle(title) {
-  return getAllMovies().find((movie) => movie.title === title)
+  const movies = await getAllMovies()
+  return movies.find((movie) => movie.title === title)
 }
 
 async function createMovie({ title, img, synopsis, rating, year }) {
@@ -30,7 +32,8 @@ async function createMovie({ title, img, synopsis, rating, year }) {
 }
 
 async function updateMovie(id, { title, img, synopsis, rating, year }) {
-  const movieIndex = allMovies.indexOf(getById(id))
+  const movie = await getById(id)
+  const movieIndex = allMovies.indexOf(movie)
   const newMovieObject = {
     id,
     title,
@@ -48,7 +51,7 @@ async function updateMovie(id, { title, img, synopsis, rating, year }) {
 }
 
 async function deleteMovie(id) {
-  const movie = getById(id)
+  const movie = await getById(id)
 
   if (movie) {
     const movieIndex = allMovies.indexOf(movie)
