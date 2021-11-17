@@ -3,19 +3,19 @@ const INITIAL_MOVIES = require('./movies.json')
 let allMovies = []
 let currentIndex = 0
 
-function getAllMovies() {
+async function getAllMovies() {
   return [...allMovies]
 }
 
-function getById(id) {
+async function getById(id) {
   return getAllMovies().find((movie) => movie.id === id)
 }
 
-function getByTitle(title) {
+async function getByTitle(title) {
   return getAllMovies().find((movie) => movie.title === title)
 }
 
-function createMovie({ title, img, synopsis, rating, year }) {
+async function createMovie({ title, img, synopsis, rating, year }) {
   const newMovie = {
     id: getNextIndex(),
     title,
@@ -29,7 +29,7 @@ function createMovie({ title, img, synopsis, rating, year }) {
   return newMovie
 }
 
-function updateMovie(id, { title, img, synopsis, rating, year }) {
+async function updateMovie(id, { title, img, synopsis, rating, year }) {
   const movieIndex = allMovies.indexOf(getById(id))
   const newMovieObject = {
     id,
@@ -47,7 +47,7 @@ function updateMovie(id, { title, img, synopsis, rating, year }) {
   return newMovieObject
 }
 
-function deleteMovie(id) {
+async function deleteMovie(id) {
   const movie = getById(id)
 
   if (movie) {
