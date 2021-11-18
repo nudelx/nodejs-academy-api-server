@@ -1,7 +1,8 @@
 const INITIAL_MOVIES = require('./movies.json')
-// const { loadAllData } = require('../db/')
+const { loadAllData, Movie } = require('../db/')
+process.env.RESET_DB && loadAllData(INITIAL_MOVIES.movies)
 
-// process.env.RESET_DB && loadAllData(INITIAL_MOVIES.movies)
+
 
 let allMovies = []
 let currentIndex = 0
