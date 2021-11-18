@@ -1,10 +1,11 @@
 require('dotenv').config()
+require('./db/')
 const express = require('express')
 const serverLog = require('./serverLog')
 const addDate = require('./middleware/addDate')
 const addResponseHeader = require('./middleware/addResponseHeader')
 const moviesRouter = require('./routers/movies-router')
-require('./db/mongoDriver')
+
 const app = express()
 const port = 8080
 
