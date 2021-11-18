@@ -54,6 +54,7 @@ app.use((err, req, res, next) => {
   if (res && res.headersSent) {
     return next(err)
   }
+  
   if (err.statusCode) {
     res.status(err.status)
   } else {
@@ -61,6 +62,7 @@ app.use((err, req, res, next) => {
   }
   return res.json({ error: err.message })
 })
+
 
 const server = app.listen(8080, () => console.log(`server started on port ${port}`))
 module.exports = { app, server }
