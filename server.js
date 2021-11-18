@@ -56,11 +56,11 @@ app.use( (err, req, res, next) => {
   return res.status(err.statusCode).json({ error: err.message })
 })
 
-process.on('uncaughtException', error => {
-  res.status(error.statusCode).json({ error: err.message })
-  if(!error.isOperational)
-    process.exit(1)
-})
+// process.on('uncaughtException', error => {
+//   res.status(error.statusCode).json({ error: err.message })
+//   if(!error.isOperational)
+//     process.exit(1)
+// })
 
 
 const server = app.listen(8080, () => console.log(` 🚀 server started on port ${port}`))
