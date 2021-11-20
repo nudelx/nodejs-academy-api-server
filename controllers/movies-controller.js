@@ -1,28 +1,36 @@
 const InvalidMovieParamError = require('../errors/InvalidMovieParamError')
+const InternalError = require('../errors/InvalidMovieParamError')
 const MoviesService = require('../services/movies-service')
+const DEFAULT_OFFSET = 0
+const DEFAULT_LIMIT = 20
 
-function getMovies(request, response) {
+async function getMovies(request, response) {
   let { offset, limit } = request.query
-  const allMovies = MoviesService.getAllMovies()
-  let relevantMovies = allMovies.slice()
 
   if (offset) {
-    offset = parseInt(offset, 10)
-    relevantMovies = relevantMovies.slice(offset)
+    offset = parseInt(offset, 10) || DEFAULT_OFFSET
+  } else {
+    offset = DEFAULT_OFFSET
   }
 
   if (limit) {
-    limit = parseInt(limit, 10)
-    relevantMovies = relevantMovies.slice(0, limit)
+    limit = parseInt(limit, 10) || DEFAULT_LIMIT
+  } else {
+    limit = DEFAULT_LIMIT
   }
 
-  return response.status(200).json({ movies: relevantMovies, total: relevantMovies.length })
+  try {
+    const movies = await MoviesService.getAllMovies(offset, limit)
+    return response.status(200).json({ movies, total: movies.length })
+  } catch (err) {
+    throw InternalError("Failed to get movies from DB")
+  }
 }
 
 function getById(request, response) {
   const { id } = request.params
   const movieId = parseInt(id, 10)
-  const movie = MoviesService.getById(movieId)
+  const movie = MoviesService.getMovie(movieId)
 
   if (!!movie) {
     return response.status(200).json(movie)

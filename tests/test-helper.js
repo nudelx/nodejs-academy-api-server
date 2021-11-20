@@ -1,8 +1,13 @@
 const { server } = require('../server')
-const MoviesService = require('../services/movies-service')
+const { loadAllData, Movie } = require('../db/')
+
+const INITIAL_MOVIES = require('../services/movies.json')
 
 beforeEach(() => {
-  MoviesService.init()
+  Promise.resolve(Movie.collection
+    .deleteMany({})
+    .then(Movie.collection.insertMany(INITIAL_MOVIES))
+    .catch(console.log))
 })
 
 after(() => {

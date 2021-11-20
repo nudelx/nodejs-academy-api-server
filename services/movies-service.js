@@ -1,78 +1,39 @@
 const INITIAL_MOVIES = require('./movies.json')
 const { loadAllData, Movie } = require('../db/')
+const InternalError = require('../errors/InternalErorr')
 process.env.RESET_DB && loadAllData(INITIAL_MOVIES.movies)
 
-
-
-let allMovies = []
-let currentIndex = 0
-
-function getAllMovies() {
-  return [...allMovies]
+async function getAllMovies(offset, limit) {
+  const request = Movie.find()
+  if (offset) {
+    request.skip(offset)
+  }
+  if (limit) {
+    request.limit(limit)
+  }
+  return await request
 }
 
-function getById(id) {
-  return getAllMovies().find((movie) => movie.id === id)
+async function getMovie(id) {
+  throw InternalError("getMovie() not implemented yet")
 }
 
-function getByTitle(title) {
-  return getAllMovies().find((movie) => movie.title === title)
+async function getByTitle(title) {
+  throw InternalError("getByTitle() not implemented yet")
 }
 
 function createMovie({ title, img, synopsis, rating, year }) {
-  const newMovie = {
-    id: getNextIndex(),
-    title,
-    img,
-    synopsis,
-    rating,
-    year,
-  }
-
-  allMovies = [...allMovies, newMovie]
+  throw InternalError("createMovie() not implemented yet")
   return newMovie
 }
 
-function updateMovie(id, { title, img, synopsis, rating, year }) {
-  const movieIndex = allMovies.indexOf(getById(id))
-  const newMovieObject = {
-    id,
-    title,
-    img,
-    synopsis,
-    rating,
-    year,
-  }
-
-  const newAlMovies = [...allMovies]
-  newAlMovies[movieIndex] = newMovieObject
-  allMovies = newAlMovies
-
+async function updateMovie(id, { title, img, synopsis, rating, year }) {
+  const newMovieObject = await Movie.findOneAndReplace({ id }, { title, img, synopsis, rating, year })
   return newMovieObject
 }
 
-function deleteMovie(id) {
-  const movie = getById(id)
-
-  if (movie) {
-    const movieIndex = allMovies.indexOf(movie)
-    const newAllMovies = [...allMovies]
-    newAllMovies.splice(movieIndex, 1)
-    allMovies = newAllMovies
-  }
-
-  return movie
+async function deleteMovie(id) {
+  return InternalError("deleteMovie Not implement yet")
 }
 
-function init() {
-  allMovies = [...INITIAL_MOVIES.movies]
-  currentIndex = allMovies[allMovies.length - 1].id
-}
-
-function getNextIndex() {
-  return ++currentIndex
-}
-
-init()
-
-module.exports = { getAllMovies, getById, getByTitle, createMovie, updateMovie, deleteMovie, init }
+module.exports = { getAllMovies, getMovie , getByTitle, createMovie, updateMovie, deleteMovie }

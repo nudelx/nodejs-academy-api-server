@@ -51,11 +51,12 @@ app
     })
   })
 
+  
 app.use((err, req, res, next) => {
   if (res && res.headersSent) {
     return next(err)
   }
-  
+
   if (err.statusCode) {
     res.status(err.status)
   } else {
