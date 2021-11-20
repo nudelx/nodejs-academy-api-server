@@ -4,10 +4,13 @@ const { loadAllData, Movie } = require('../db/')
 const INITIAL_MOVIES = require('../services/movies.json')
 
 beforeEach(() => {
-  Promise.resolve(Movie.collection
+  return new Promise(async function(resolve, reject) {
+    Movie.collection
     .deleteMany({})
     .then(Movie.collection.insertMany(INITIAL_MOVIES))
-    .catch(console.log))
+    .catch(console.log)
+    resolve()
+  });
 })
 
 after(() => {
