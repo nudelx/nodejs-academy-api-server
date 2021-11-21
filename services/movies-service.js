@@ -14,6 +14,11 @@ async function getAllMovies(offset, limit) {
   return request
 }
 
+async function updateMovie(id, { title, img, synopsis, rating, year }) {
+  const newMovieObject = await Movie.findOneAndReplace({ id }, { title, img, synopsis, rating, year })
+  return newMovieObject
+}
+
 async function getMovie(id) {
   throw InternalError("getMovie() not implemented yet")
 }
@@ -24,12 +29,6 @@ async function getByTitle(title) {
 
 function createMovie({ title, img, synopsis, rating, year }) {
   throw InternalError("createMovie() not implemented yet")
-  return newMovie
-}
-
-async function updateMovie(id, { title, img, synopsis, rating, year }) {
-  const newMovieObject = await Movie.findOneAndReplace({ id }, { title, img, synopsis, rating, year })
-  return newMovieObject
 }
 
 async function deleteMovie(id) {
