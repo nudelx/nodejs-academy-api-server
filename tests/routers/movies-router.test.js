@@ -1,13 +1,18 @@
 const supertest = require('supertest')
 const { expect } = require('chai')
 const { app } = require('../../server')
+const { Movie } = require('../../db')
 const INITIAL_MOVIES = require('../../services/movies.json')
+const { sinon, dbDocArray } = require('../test-helper')
+
 
 describe('Movies Controller', () => {
   describe('GET /movies', function () {
     context('without query params', () => {
-      it('should have status code 200', async function () {
+      it.only('should have status code 200', async function () {
+        const mock = sinon.stub(Movie, "find").returns(dbDocArray)
         const response = await supertest(app).get('/movies').expect(200)
+        expect(mock.calledOnce).to.be.true
 
         expect(response.body).to.exist
         expect(response.body.movies).to.be.an('array').with.lengthOf(INITIAL_MOVIES.movies.length)
@@ -16,12 +21,13 @@ describe('Movies Controller', () => {
 
     context('with query params', () => {
       context('when limit=10 and offset=10', () => {
-        it('should return 10 items', async () => {
+        it.only('should return 10 items', async () => {
+          const mock = sinon.stub(Movie, "find").returns(dbDocArray)
           const response = await supertest(app).get('/movies?limit=10&offset=10').expect(200)
-
+          expect(dbDocArray.skip.calledWith(10)).to.be.true
+          expect(dbDocArray.limit.calledWith(10)).to.be.true
           expect(response.body).to.exist
-          expect(response.body.movies).to.be.an('array').with.lengthOf(10)
-          expect(response.body.movies[0].id).to.eq(11) // starts after 10 results
+          expect(response.body.movies).to.be.an('array')
         })
       })
     })
@@ -57,7 +63,7 @@ describe('Movies Controller', () => {
     context('when this is a valid new movie', () => {
       it('should create a new movie object', async function () {
         const lastId = INITIAL_MOVIES.movies[INITIAL_MOVIES.movies.length - 1].id
-  
+
         const newMovieDetails = {
           title: 'new movie title',
           img: 'new movie img',
@@ -66,7 +72,7 @@ describe('Movies Controller', () => {
           year: 2021,
         }
         const response = await supertest(app).post('/movies').send(newMovieDetails).expect(201)
-  
+
         expect(response.body).to.exist
         expect(response.body.id).to.be.greaterThan(lastId)
         expect(response.body.title).to.eq(newMovieDetails.title)
@@ -79,10 +85,10 @@ describe('Movies Controller', () => {
     context('when this is an invalid movie object', () => {
       it('should return InvalidMovieParamError', async function () {
         const lastId = INITIAL_MOVIES.movies[INITIAL_MOVIES.movies.length - 1].id
-  
+
         const newMovieDetails = {}
         const response = await supertest(app).post('/movies').send(newMovieDetails).expect(400)
-  
+
         expect(response.body).to.exist
         expect(response.body.error).to.exist
       })

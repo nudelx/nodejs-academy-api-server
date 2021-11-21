@@ -11,7 +11,7 @@ async function getAllMovies(offset, limit) {
   if (limit) {
     request.limit(limit)
   }
-  return await request
+  return request
 }
 
 async function getMovie(id) {
