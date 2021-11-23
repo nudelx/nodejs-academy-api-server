@@ -15,13 +15,12 @@ async function getAllMovies(offset, limit) {
 }
 
 async function updateMovie(id, { title, img, synopsis, rating, year }) {
-  const newMovieObject = await Movie.findOneAndReplace({ id }, { title, img, synopsis, rating, year })
+  const newMovieObject = await Movie.findOneAndReplace({ movie_id: id }, { title, img, synopsis, rating, year })
   return newMovieObject
 }
 
 async function getMovie(movieId) {
   const movie = await Movie.findOne({ movie_id: movieId })
-  console.log("movie", movie)
   return movie
 }
 

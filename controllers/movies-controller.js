@@ -85,7 +85,7 @@ async function upsertMovie(request, response, next) {
   const doesMovieExist = !!movie
 
   if (doesMovieExist) {
-    const updatedMovie = await MoviesService.updateMovie(movie.id, { title, img, synopsis, rating, year })
+    const updatedMovie = await MoviesService.updateMovie(movie.movie_id, { title, img, synopsis, rating, year })
     return response.status(200).json(updatedMovie)
   } else {
     const newMovie = await MoviesService.createMovie({ title, img, synopsis, rating, year })
@@ -93,9 +93,9 @@ async function upsertMovie(request, response, next) {
   }
 }
 
-function modifyMovie(request, response) {
+async function modifyMovie(request, response) {
   const movieId = parseInt(request.params.id)
-  const movie = await MoviesService.getById(movieId)
+  const movie = await MoviesService.getMovie(movieId)
   const doesMovieExist = !!movie
 
   if (!doesMovieExist) {
@@ -111,7 +111,7 @@ function modifyMovie(request, response) {
     ...(year && { year }),
   }
   const patchedMovieAtrributes = { ...movie, ...definedParams }
-  const updatedMovie = await MoviesService.updateMovie(movie.id, patchedMovieAtrributes)
+  const updatedMovie = await MoviesService.updateMovie(movie.movie_id, patchedMovieAtrributes)
   return response.status(200).json(updatedMovie)
 }
 
