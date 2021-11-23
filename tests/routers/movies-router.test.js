@@ -53,7 +53,7 @@ describe('Movies Controller', () => {
     context('when id of movie doesnt exist', () => {
       it('should return status code 404', async () => {
         const id = 999
-        sinon.stub(Movie, "findOne").withArgs().returns(undefined)
+        //TODO add correct
         const response = await supertest(app).get(`/movies/${id}`).expect(404)
 
         expect(response.body).to.exist
@@ -67,7 +67,8 @@ describe('Movies Controller', () => {
       it('should create a new movie object', async function () {
         const existingMovie = dbDocArray[dbDocArray.length - 1]
         const lastId = existingMovie.movie_id
-        sinon.stub(Movie, "findOne").withArgs({}, {}, { sort: { movie_id: -1 } }).returns(existingMovie)
+        //TODO add correct stub with arguments "{}, {}, { sort: { movie_id: -1 } }"
+        
         sinon.stub(Movie.prototype, "save").returns({})
 
 
@@ -107,8 +108,10 @@ describe('Movies Controller', () => {
         const existingMovie = dbDocArray[dbDocArray.length - 1]
         const lastId = existingMovie.movie_id
         const stub = sinon.stub(Movie, "findOne")
+        //TODO just see how we operate with stub. we know it's going to be called twice. one to find for update, second find for next id.
         stub.onCall(0).returns(undefined)
         stub.onCall(1).returns(existingMovie)
+        //TODO check here -> we stub not model but it's prototype that is inhereted from 'scheme" save method"
         sinon.stub(Movie.prototype, "save").returns({})
 
         const newMovieDetails = {
@@ -183,7 +186,8 @@ describe('Movies Controller', () => {
     context('when the movie exists', () => {
       it('should update the movie details', async () => {
         const existingMovie = dbDocArray[dbDocArray.length - 1]
-        sinon.stub(Movie, "findOne").withArgs({ movie_id: existingMovie.movie_id }).returns(existingMovie)
+        //TODO stub the correct method that used in finding movie to update and return the existingMovie.
+        //use 'should replace the movie with the new movie object and keep its id' test for reference
 
         const newRating = 5
         const newYear = 2021
@@ -199,15 +203,8 @@ describe('Movies Controller', () => {
           rating: newRating,
           year: newYear,
         }
-        sinon.stub(Movie, "findOneAndReplace")
-          .withArgs({ movie_id: existingMovie.movie_id },
-            {
-              title: existingMovie.title,
-              img: existingMovie.img,
-              synopsis: existingMovie.synopsis,
-              rating: newRating,
-              year: newYear
-            }).returns(updatedMovieDetails)
+        //TODO stub the correct method that used in finding and update movie to update and return the updatedMovieDetails.
+        //use 'should replace the movie with the new movie object and keep its id' test for reference
 
         const response = await supertest(app)
           .patch(`/movies/${existingMovie.movie_id}`)
@@ -229,7 +226,7 @@ describe('Movies Controller', () => {
     context('when id of movie doesnt exist', () => {
       it('should return status code 404', async () => {
         const idToDelete = 999
-        sinon.stub(Movie, "findOneAndDelete").withArgs({ movie_id: idToDelete }).returns(undefined)
+        //TODO stub the correct method to delete the movie by it's movie_id
         const response = await supertest(app).delete(`/movies/${idToDelete}`).send({}).expect(404)
 
         expect(response.body).to.exist
@@ -240,7 +237,10 @@ describe('Movies Controller', () => {
     context('when the movie exists', () => {
       it('should remove the movie', async () => {
         const existingMovie = dbDocArray[dbDocArray.length - 1]
-        const stub = sinon.stub(Movie, "findOneAndDelete").withArgs({ movie_id: existingMovie.movie_id })
+        //TODO stub the correct method to delete the movie by it's movie_id
+        //TODO also here we want to return different results on first and on second call. 
+        //On first we will return exisitngMovie that was deleted
+        //On second call we will return nothing
         stub.onFirstCall().returns(existingMovie)
         stub.onSecondCall().returns(undefined)
         const response = await supertest(app).delete(`/movies/${existingMovie.movie_id}`).expect(200)

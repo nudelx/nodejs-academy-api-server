@@ -15,29 +15,28 @@ async function getAllMovies(offset, limit) {
 }
 
 async function updateMovie(id, { title, img, synopsis, rating, year }) {
-  const newMovieObject = await Movie.findOneAndReplace({ movie_id: id }, { title, img, synopsis, rating, year })
+  //TODO use correct method to find and replace(hint hint) the movie with it's new properties https://mongoosejs.com/docs/api/query.html#query_Query-findOneAndReplace 
   return newMovieObject
 }
 
 async function getMovie(movieId) {
-  const movie = await Movie.findOne({ movie_id: movieId })
+  //TODO use findOne with correct movie_id as filter https://mongoosejs.com/docs/api/query.html#query_Query-findOne
   return movie
 }
 
 async function getByTitle(title) {
-  const movie = await Movie.findOne({ title })
+  //TODO use findOne with correct argument to find Movie by it's title https://mongoosejs.com/docs/api/query.html#query_Query-findOne
   return movie
 }
 
 async function createMovie({ title, img, synopsis, rating, year }) {
   const nextMovieId = await getNextMovieId()
-  const movie = new Movie({ title, img, synopsis, rating, year, movie_id: nextMovieId })
-  movie.save()
+  //TODO create here model with correct arguments and save it
   return movie
 }
 
 async function deleteMovie(id) {
-  const deletedMovie = await Movie.findOneAndDelete({ movie_id: id })
+  //TODO use correct method from Mongoose api to find and delete movie by it's movie_id
   return deletedMovie
 }
 
