@@ -19,20 +19,32 @@ async function updateMovie(id, { title, img, synopsis, rating, year }) {
   return newMovieObject
 }
 
-async function getMovie(id) {
-  throw InternalError("getMovie() not implemented yet")
+async function getMovie(movieId) {
+  const movie = await Movie.findOne({ movie_id: movieId })
+  console.log("movie", movie)
+  return movie
 }
 
 async function getByTitle(title) {
-  throw InternalError("getByTitle() not implemented yet")
+  const movie = await Movie.findOne({ title })
+  return movie
 }
 
-function createMovie({ title, img, synopsis, rating, year }) {
-  throw InternalError("createMovie() not implemented yet")
+async function createMovie({ title, img, synopsis, rating, year }) {
+  const nextMovieId = await getNextMovieId()
+  const movie = new Movie({ title, img, synopsis, rating, year, movie_id: nextMovieId })
+  movie.save()
+  return movie
 }
 
 async function deleteMovie(id) {
-  return InternalError("deleteMovie Not implement yet")
+  const deletedMovie = await Movie.findOneAndDelete({ movie_id: id })
+  return deletedMovie
 }
 
-module.exports = { getAllMovies, getMovie , getByTitle, createMovie, updateMovie, deleteMovie }
+async function getNextMovieId() {
+  const lastMovie = await Movie.findOne({}, {}, { sort: { movie_id: -1 } })
+  return ++lastMovie.movie_id
+}
+
+module.exports = { getAllMovies, getMovie, getByTitle, createMovie, updateMovie, deleteMovie }

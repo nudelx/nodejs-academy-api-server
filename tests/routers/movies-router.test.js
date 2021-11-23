@@ -9,8 +9,8 @@ const { sinon, dbDocArray } = require('../test-helper')
 describe('Movies Controller', () => {
   describe('GET /movies', function () {
     context('without query params', () => {
-      it.only('should have status code 200', async function () {
-        const mock = sinon.stub(Movie, "find").returns(dbDocArray)
+      it('should have status code 200', async function () {
+        sinon.stub(Movie, "find").returns(dbDocArray)
         const response = await supertest(app).get('/movies').expect(200)
         expect(mock.calledOnce).to.be.true
 
@@ -21,8 +21,8 @@ describe('Movies Controller', () => {
 
     context('with query params', () => {
       context('when limit=10 and offset=10', () => {
-        it.only('should return 10 items', async () => {
-          const mock = sinon.stub(Movie, "find").returns(dbDocArray)
+        it('should return 10 items', async () => {
+          sinon.stub(Movie, "find").returns(dbDocArray)
           const response = await supertest(app).get('/movies?limit=10&offset=10').expect(200)
           expect(dbDocArray.skip.calledWith(10)).to.be.true
           expect(dbDocArray.limit.calledWith(10)).to.be.true
@@ -36,7 +36,8 @@ describe('Movies Controller', () => {
   describe('GET /movies/:id', function () {
     context('when correct id is given', () => {
       it('should have status code 200 with the correct movie object', async function () {
-        const existingMovie = INITIAL_MOVIES.movies[INITIAL_MOVIES.movies.length - 1]
+        const existingMovie = dbDocArray[dbDocArray.length - 1]
+        sinon.stub(Movie, "findOne").returns(existingMovie)
         const response = await supertest(app).get(`/movies/${existingMovie.id}`).expect(200)
 
         expect(response.body).to.exist
@@ -51,6 +52,7 @@ describe('Movies Controller', () => {
 
     context('when id of movie doesnt exist', () => {
       it('should return status code 404', async () => {
+        sinon.stub(Movie, "findOne").returns(undefined)
         const response = await supertest(app).get('/movies/999').expect(404)
 
         expect(response.body).to.exist
@@ -62,7 +64,11 @@ describe('Movies Controller', () => {
   describe('POST /movies', function () {
     context('when this is a valid new movie', () => {
       it('should create a new movie object', async function () {
-        const lastId = INITIAL_MOVIES.movies[INITIAL_MOVIES.movies.length - 1].id
+        const existingMovie = dbDocArray[dbDocArray.length - 1]
+        const lastId = existingMovie.movie_id
+        sinon.stub(Movie, "findOne").returns(existingMovie)
+        sinon.stub(Movie.prototype, "save").returns({})
+        
 
         const newMovieDetails = {
           title: 'new movie title',
@@ -71,10 +77,11 @@ describe('Movies Controller', () => {
           rating: 5,
           year: 2021,
         }
+        
         const response = await supertest(app).post('/movies').send(newMovieDetails).expect(201)
 
         expect(response.body).to.exist
-        expect(response.body.id).to.be.greaterThan(lastId)
+        expect(response.body.movie_id).to.be.greaterThan(lastId)
         expect(response.body.title).to.eq(newMovieDetails.title)
         expect(response.body.img).to.eq(newMovieDetails.img)
         expect(response.body.synopsis).to.eq(newMovieDetails.synopsis)
@@ -97,8 +104,13 @@ describe('Movies Controller', () => {
 
   describe('PUT /movies', function () {
     context('when this is a new movie', () => {
-      it('should create a new movie object', async function () {
-        const lastId = INITIAL_MOVIES.movies[INITIAL_MOVIES.movies.length - 1].id
+      it.only('should create a new movie object', async function () {
+        const existingMovie = dbDocArray[dbDocArray.length - 1]
+        const lastId = existingMovie.movie_id
+        const stub = sinon.stub(Movie, "findOne")
+        stub.onCall(0).returns(undefined)
+        stub.onCall(1).returns(existingMovie)
+        sinon.stub(Movie.prototype, "save").returns({})
 
         const newMovieDetails = {
           title: 'new movie title',

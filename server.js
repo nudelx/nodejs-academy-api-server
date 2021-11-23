@@ -57,12 +57,10 @@ app.use((err, req, res, next) => {
     return next(err)
   }
 
-  if (err.statusCode) {
-    res.status(err.status)
-  } else {
-    res.status(500)
+  if (!err.statusCode) {
+    err.statusCode = 500
   }
-  return res.json({ error: err.message })
+  return res.status(err.statusCode).json({ error: err.message })
 })
 
 

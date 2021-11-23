@@ -27,10 +27,10 @@ async function getMovies(request, response) {
   }
 }
 
-function getById(request, response) {
+async function getById(request, response) {
   const { id } = request.params
   const movieId = parseInt(id, 10)
-  const movie = MoviesService.getMovie(movieId)
+  const movie = await MoviesService.getMovie(movieId)
 
   if (!!movie) {
     return response.status(200).json(movie)
@@ -39,7 +39,7 @@ function getById(request, response) {
   }
 }
 
-function createMovie(request, response, next) {
+async function createMovie(request, response, next) {
   const { title, img, synopsis, rating, year } = request.body
 
   if (!title) {
@@ -58,11 +58,11 @@ function createMovie(request, response, next) {
     return next(InvalidMovieParamError('year is a required body param'))
   }
 
-  const newMovie = MoviesService.createMovie({ title, img, synopsis, rating, year })
+  const newMovie = await MoviesService.createMovie({ title, img, synopsis, rating, year })
   return response.status(201).json(newMovie)
 }
 
-function upsertMovie(request, response, next) {
+async function upsertMovie(request, response, next) {
   const { title, img, synopsis, rating, year } = request.body
 
   if (!title) {
@@ -81,21 +81,21 @@ function upsertMovie(request, response, next) {
     return next(InvalidMovieParamError('year is a required body param'))
   }
 
-  const movie = MoviesService.getByTitle(title)
+  const movie = await MoviesService.getByTitle(title)
   const doesMovieExist = !!movie
 
   if (doesMovieExist) {
-    const updatedMovie = MoviesService.updateMovie(movie.id, { title, img, synopsis, rating, year })
+    const updatedMovie = await MoviesService.updateMovie(movie.id, { title, img, synopsis, rating, year })
     return response.status(200).json(updatedMovie)
   } else {
-    const newMovie = MoviesService.createMovie({ title, img, synopsis, rating, year })
+    const newMovie = await MoviesService.createMovie({ title, img, synopsis, rating, year })
     return response.status(201).json(newMovie)
   }
 }
 
 function modifyMovie(request, response) {
   const movieId = parseInt(request.params.id)
-  const movie = MoviesService.getById(movieId)
+  const movie = await MoviesService.getById(movieId)
   const doesMovieExist = !!movie
 
   if (!doesMovieExist) {
@@ -111,13 +111,13 @@ function modifyMovie(request, response) {
     ...(year && { year }),
   }
   const patchedMovieAtrributes = { ...movie, ...definedParams }
-  const updatedMovie = MoviesService.updateMovie(movie.id, patchedMovieAtrributes)
+  const updatedMovie = await MoviesService.updateMovie(movie.id, patchedMovieAtrributes)
   return response.status(200).json(updatedMovie)
 }
 
-function deleteMovie(request, response) {
+async function deleteMovie(request, response) {
   const movieId = parseInt(request.params.id)
-  const deletedMovie = MoviesService.deleteMovie(movieId)
+  const deletedMovie = await MoviesService.deleteMovie(movieId)
 
   if (!deletedMovie) {
     return response.status(404).json({ error: `no movie with id ${movieId}` })
