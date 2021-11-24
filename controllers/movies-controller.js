@@ -1,5 +1,6 @@
 const InvalidMovieParamError = require('../errors/InvalidMovieParamError')
 const InternalError = require('../errors/InvalidMovieParamError')
+const { body, validationResult } = require('express-validator')
 const MoviesService = require('../services/movies-service')
 const DEFAULT_OFFSET = 0
 const DEFAULT_LIMIT = 20
@@ -40,24 +41,12 @@ async function getById(request, response) {
 }
 
 async function createMovie(request, response, next) {
+  const errors = validationResult(request)
+  if (!errors.isEmpty()) {
+    return next(InvalidMovieParamError(errors.array()[0].msg));
+  }
+
   const { title, img, synopsis, rating, year } = request.body
-
-  if (!title) {
-    return next(InvalidMovieParamError('title is a required body param'))
-  }
-
-  if (!synopsis) {
-    return next(InvalidMovieParamError('synopsis is a required body param'))
-  }
-
-  if (!rating) {
-    return next(InvalidMovieParamError('rating is a required body param'))
-  }
-
-  if (!year) {
-    return next(InvalidMovieParamError('year is a required body param'))
-  }
-
   const newMovie = await MoviesService.createMovie({ title, img, synopsis, rating, year })
   return response.status(201).json(newMovie)
 }
@@ -126,4 +115,20 @@ async function deleteMovie(request, response) {
   return response.status(200).json(deletedMovie)
 }
 
-module.exports = { getMovies, getById, createMovie, upsertMovie, modifyMovie, deleteMovie }
+
+function validate(method) {
+  switch(method) {
+    case 'createMovie': {
+      return [
+        body('title', 'title doesn\'t exists').exists().isString().escape(),
+        body('img', 'img is not exists or not valid url').exists().isURL(),
+        body('synopsis', 'synopsis doesn\'t exists').exists().isString().escape(),
+        body('rating', 'rating doesn\'t exists or not numeric').exists().isNumeric(),
+        body('year', 'year doesn\'t exists or not numeric').exists().isNumeric(),
+      ]
+    }
+  }
+}
+
+
+module.exports = { getMovies, getById, createMovie, upsertMovie, modifyMovie, deleteMovie, validate }

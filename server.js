@@ -5,6 +5,7 @@ const serverLog = require('./serverLog')
 const addDate = require('./middleware/addDate')
 const addResponseHeader = require('./middleware/addResponseHeader')
 const moviesRouter = require('./routers/movies-router')
+const usersRouter = require('./routers/users-router')
 
 const app = express()
 const port = 8080
@@ -17,6 +18,8 @@ app.use(
 )
 app.use(serverLog, addDate, addResponseHeader)
 app.use('/movies', moviesRouter)
+app.use('/users', usersRouter)
+
 app.get('/', (req, res, next) => {
   res.status(200).json({
     server: '1.0.0',

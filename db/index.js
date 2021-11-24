@@ -14,33 +14,13 @@ fs.readdirSync(path.join(__dirname, 'models'))
   })
 
 const connect = async () => {
-  const { DB_USER, DB_PATH } = process.env
-  // try {
-  //   await mongoose.connect(
-  //     `mongodb+srv://${DB_USER}:${DB_PATH}@cluster0.bb7jy.mongodb.net/moviesDb?retryWrites=true&w=majority`
-  //   )
-  //   console.log(` 🍃 mongo-db connected`)
-
+  const { DB_USER, DB_PASS, DB_HOST } = process.env
   return mongoose
     .connect(
-      `mongodb+srv://${DB_USER}:${DB_PATH}@cluster0.bb7jy.mongodb.net/moviesDb?retryWrites=true&w=majority`
+      `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/moviesDb?retryWrites=true&w=majority`
     )
     .then(() => console.log(` 🍃 mongo-db connected`))
     .catch(console.log)
-  // const { Movie } = models
-  // // example of new movie record
-  // const newMovie = new Movie({
-  //   title: 'StarWars',
-  //   img: 'https://m.media-amazon.com/images/M/MV5BYTRhNjcwNWQtMGJmMi00NmQyLWE2YzItODVmMTdjNWI0ZDA2XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg',
-  //   synopsis:
-  //     'Two Jedi escape a hostile blockade to find allies and come across a young boy who may bring balance to the Force, but the long dormant Sith resurface to claim their original glory.',
-  //   rating: 5555,
-  //   year: 1999,
-  // })
-  // newMovie.save()
-  // } catch (e) {
-  //   console.log(e)
-  // }
 }
 
 const loadAllData = function (moviesJson) {
