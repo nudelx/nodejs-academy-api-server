@@ -53,7 +53,7 @@ app
   })
 
   
-app.use((err, req, res, next) => {
+app.use(async (err, req, res, next) => {
   if (res && res.headersSent) {
     return next(err)
   }

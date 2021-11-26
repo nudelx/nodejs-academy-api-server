@@ -28,15 +28,18 @@ async function getMovies(request, response) {
   }
 }
 
-async function getById(request, response) {
+async function getById(request, response, next) {
   const { id } = request.params
   const movieId = parseInt(id, 10)
-  const movie = await MoviesService.getMovie(movieId)
-
-  if (!!movie) {
-    return response.status(200).json(movie)
-  } else {
-    return response.status(404).json({ error: `no movie with id ${movieId}` })
+  try {
+    const movie = await MoviesService.getMovie(movieId, request.user)
+    if (!!movie) {
+      return response.status(200).json(movie)
+    } else {
+      return response.status(404).json({ error: `no movie with id ${movieId}` })
+    }
+  } catch (e) {
+    next(e)
   }
 }
 
@@ -47,7 +50,8 @@ async function createMovie(request, response, next) {
   }
 
   const { title, img, synopsis, rating, year } = request.body
-  const newMovie = await MoviesService.createMovie({ title, img, synopsis, rating, year })
+  const user = request.user
+  const newMovie = await MoviesService.createMovie({ title, img, synopsis, rating, year }, user)
   return response.status(201).json(newMovie)
 }
 
@@ -117,7 +121,7 @@ async function deleteMovie(request, response) {
 
 
 function validate(method) {
-  switch(method) {
+  switch (method) {
     case 'createMovie': {
       return [
         body('title', 'title doesn\'t exists').exists().isString().escape(),

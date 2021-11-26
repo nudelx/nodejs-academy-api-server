@@ -18,7 +18,13 @@ const movieSchema = new Schema({
     img: String,
     synopsis: String,
     rating: Number,
-    year: Number
+    year: Number,
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
+    }
 })
+
 
 module.exports = mongoose.model('Movie', movieSchema)

@@ -1,6 +1,7 @@
 const INITIAL_MOVIES = require('./movies.json')
 const { loadAllData, Movie } = require('../db/')
 const InternalError = require('../errors/InternalErorr')
+const Unauthorized = require('../errors/UnauthorizedError')
 process.env.RESET_DB && loadAllData(INITIAL_MOVIES.movies)
 
 async function getAllMovies(offset, limit) {
@@ -19,9 +20,17 @@ async function updateMovie(id, { title, img, synopsis, rating, year }) {
   return newMovieObject
 }
 
-async function getMovie(movieId) {
+async function getMovie(movieId, user) {
   const movie = await Movie.findOne({ movie_id: movieId })
-  return movie
+  if(!movie) return
+  //return movies that are public
+  if(!movie.owner) return movie
+
+  if (movie.owner.equals(user._id)) {
+    return movie
+  } else {
+    throw Unauthorized(`Unauthorized to get access to movie ${movieId}`)
+  }
 }
 
 async function getByTitle(title) {
@@ -29,9 +38,9 @@ async function getByTitle(title) {
   return movie
 }
 
-async function createMovie({ title, img, synopsis, rating, year }) {
+async function createMovie({ title, img, synopsis, rating, year }, user) {
   const nextMovieId = await getNextMovieId()
-  const movie = new Movie({ title, img, synopsis, rating, year, movie_id: nextMovieId })
+  const movie = new Movie({ title, img, synopsis, rating, year, movie_id: nextMovieId, owner: user._id })
   movie.save()
   return movie
 }
