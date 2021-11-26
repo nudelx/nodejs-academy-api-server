@@ -4,7 +4,6 @@ const path = require('path')
 const basename = path.basename(__filename)
 const models = {}
 
-/// talk about next session Yoni and new model
 fs.readdirSync(path.join(__dirname, 'models'))
   .filter((file) => file.slice(-3) === '.js')
   .forEach((file) => {
@@ -16,10 +15,10 @@ fs.readdirSync(path.join(__dirname, 'models'))
 
 const connect = async () => {
   const { DB_USER, DB_PASS, DB_HOST } = process.env
-  const url = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/moviesDb?retryWrites=true&w=majority`
-
   return mongoose
-    .connect( url )
+    .connect(
+      `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/moviesDb?retryWrites=true&w=majority`
+    )
     .then(() => console.log(` 🍃 mongo-db connected`))
     .catch(console.log)
 }
