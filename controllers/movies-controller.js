@@ -1,5 +1,5 @@
-const InvalidMovieParamError = require('../errors/InvalidMovieParamError')
-const InternalError = require('../errors/InvalidMovieParamError')
+const InvalidMovieParamError = require('../errors/InvalidParamError')
+const InternalError = require('../errors/InvalidParamError')
 const { body, validationResult } = require('express-validator')
 const MoviesService = require('../services/movies-service')
 const DEFAULT_OFFSET = 0
@@ -130,6 +130,14 @@ function validate(method) {
         body('rating', 'rating doesn\'t exists or not numeric').exists().isNumeric(),
         body('year', 'year doesn\'t exists or not numeric').exists().isNumeric(),
       ]
+    }
+    //TODO add necessary funciton to validate every request: https://express-validator.github.io/docs/
+    //TODO 1. add "getById" validation
+    //TODO 2. add "upsertMovie" validation
+    //TODO 3. add "modifyMovie" validation
+    //TODO 4. add "deleteMovie" validation
+    case 'getById': {
+
     }
   }
 }

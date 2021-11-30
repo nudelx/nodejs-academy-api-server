@@ -1,52 +1,47 @@
 const express = require('express')
-const User = require('./../db/models/user')
 const router = new express.Router()
 const auth = require('./../middleware/auth')
 
-router.post('', async (req, res) => {
-    const user = new User(req.body)
+const {
+    createUser,
+    loginUser,
+    logoutUser,
+    deleteUser,
+    validate,
+  } = require('../controllers/users-controller')
 
-    try {
-        const savedUser = await user.save()
-        console.log("savedUser", savedUser)
-        const token = await user.generateAuthToken()
-        res.status(201).send({ user, token })
-    } catch (e) {
-        res.status(400).send(e)
-    }
-})
+/**
+ * Creates user and return user with valid token
+ * POST /users/ 
+ * body: {
+ *  "name": "Superman"
+ *  "email": "superman@dc.com",
+ *  "password": "superDuperPassword"
+ * }
+ */
+router.post('', validate("createUser"), createUser)
 
-router.post('/login', async (req, res) => {
-    try {
-        const user = await User.findByCredentials(req.body.email, req.body.password)
-        const token = await user.generateAuthToken()
-        res.send({ user, token })
-    } catch (e) {
-        res.status(400).send(e.message)
-    }
-})
+/**
+ * Login user into system and returning logged user and token
+ * POST /users/login 
+ * body: {
+ *  "email": "superman@dc.com",
+ *  "password": "superDuperPassword"
+ * }
+ */
+router.post('/login', loginUser)
 
-router.post('/logout', auth, async (req, res) => {
-    try {
-        req.user.tokens = req.user.tokens.filter((token) => {
-            return token.token !== req.token
-        })
-        await req.user.save()
-        res.send()
-    } catch (e) {
-        res.status(500).send()
-    }
-})
+/**
+ * Logout user from the system by deleting his token.
+ * Pay attention it should be authenticated user 
+ */
+router.post('/logout', logoutUser)
 
-router.delete('/me', auth, async (req, res) => {
-    try {
-        await req.user.remove()
-        sendCancellationEmail(req.user.email, req.user.name)
-        res.send(req.user)
-    } catch (e) {
-        res.status(500).send(e)
-    }
 
-})
+/**
+ * Delete user from the system at all
+ * Pay attention it should be authenticated user 
+ */
+router.delete('/me', auth, deleteUser)
 
 module.exports = router
