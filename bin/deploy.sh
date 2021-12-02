@@ -26,7 +26,11 @@ function start_deploy () {
 # #   # git merge -X theirs main
 # #   # git commit -am "version update $(date)"
 # #   # git checkout main
+}
 
+function uncommitted () {
+  echo " ⛔️  Uncommitted changes, please commit all your changes before deploy"
+  exit 
 }
 
 
@@ -34,7 +38,7 @@ function start_deploy () {
 clear
 logo
 echo " 👷‍♂️  Staring Movie API Deployment "
-git diff-index --quiet HEAD -- || echo " ⛔️  Uncommitted changes, please commit all your changes before deploy" && exit 
+git diff-index --quiet HEAD -- || uncommitted
 
 
 
