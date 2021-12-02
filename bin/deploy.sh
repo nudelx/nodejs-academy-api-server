@@ -29,30 +29,26 @@ function start_deploy () {
 }
 
 function uncommitted () {
-  echo " ⛔️  Uncommitted changes, please commit all your changes before deploy"
+  echo " ⛔️   Uncommitted changes, please commit all your changes before the deploy"
   exit 
 }
-
-
 
 clear
 logo
 echo " 👷‍♂️  Staring Movie API Deployment "
 git diff-index --quiet HEAD -- || uncommitted
 
-
-
-echo " 👷‍♂️ Running test "
+echo " 👷‍♂️  Running test "
 if npm run test
 then
-  echo " 👷‍♂️ Tests are ok ✅ starting the deploy  "
+  echo " 👷‍♂️  Tests are ok ✅ starting the deploy  "
   start_deploy
 else
   echo "NO !!"
+  echo " 👷‍♂️ Tests are broken ⛔️  terminating the deployment "
 fi
-echo " 👷‍♂️ Tests are broken ⛔️  terminating the deployment "
 
-echo "" && echo ""
+
 # git add .
 # git commit -am "new deploy $(date)"
 # git push heroku deploy
