@@ -18,7 +18,7 @@ echo "" && echo ""
 }
 
 function start_deploy () {
-  echo "merging the main"
+  echo "👷‍♂️  Merging the main branch"
   #   git checkout main
 # git pull
 # #  # git checkout deploy
@@ -33,6 +33,13 @@ function uncommitted () {
   exit 
 }
 
+function push_to_heroku () {
+  echo "👷‍♂️  Pushing to Heroku"
+  # git add .
+  # git commit -am "new deploy $(date)"
+  # git push heroku deploy
+}
+
 clear
 logo
 echo " 👷‍♂️  Staring Movie API Deployment "
@@ -44,11 +51,5 @@ then
   echo " 👷‍♂️  Tests are ok ✅ starting the deploy  "
   start_deploy
 else
-  echo "NO !!"
-  echo " 👷‍♂️ Tests are broken ⛔️  terminating the deployment "
+  echo " ⛔️ Tests are broken terminating the deployment "
 fi
-
-
-# git add .
-# git commit -am "new deploy $(date)"
-# git push heroku deploy
