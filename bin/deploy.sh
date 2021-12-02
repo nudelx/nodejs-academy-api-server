@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
+
 clear
+echo " 👷‍♂️  Staring Movie API Deploy "
 git checkout main
 git pull
 git checkout deploy
@@ -12,3 +14,5 @@ echo " bla bla $? "
 # git add .
 # git commit -am "new deploy $(date)"
 # git push heroku deploy
+
+git checkout main
