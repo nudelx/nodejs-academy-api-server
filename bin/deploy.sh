@@ -18,7 +18,7 @@ echo "" && echo ""
 }
 
 function start_deploy () {
-  echo "👷‍♂️  Merging the main branch"
+  echo " 👷‍♂️  Merging the main branch"
   #   git checkout main
 # git pull
 # #  # git checkout deploy
@@ -43,7 +43,7 @@ function push_to_heroku () {
 clear
 logo
 echo " 👷‍♂️  Staring Movie API Deployment "
-git diff-index --quiet HEAD -- || uncommitted
+# git diff-index --quiet HEAD -- || uncommitted
 
 echo " 👷‍♂️  Running test "
 if npm run test

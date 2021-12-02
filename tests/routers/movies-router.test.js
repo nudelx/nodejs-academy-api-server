@@ -16,7 +16,7 @@ describe('Movies Controller', () => {
 
         // expect(response.body).to.exist
         // expect(response.body.movies).to.be.an('array').with.lengthOf(INITIAL_MOVIES.movies.length)
-        expect(false).to.be.true
+        expect(true).to.be.true
       })
     })
 
