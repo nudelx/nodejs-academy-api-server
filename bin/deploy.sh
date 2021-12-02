@@ -2,6 +2,7 @@
 
 clear
 echo " 👷‍♂️  Staring Movie API Deployment "
+git diff-index --quiet HEAD -- || echo " ⛔️  Uncommitted changes, please commit all your changes before deploy" && exit 
 git checkout main
 git pull
 
