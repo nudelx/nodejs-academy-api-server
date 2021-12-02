@@ -64,5 +64,5 @@ app.use(async (err, req, res, next) => {
   return res.status(err.statusCode).json({ error: err.message })
 })
 
-const server = app.listen(  8080, () => console.log(` 🚀 server started on port ${port}`))
+const server = app.listen(8080, () => console.log(` 🚀 server started on port ${port}`))
 module.exports = { app, server }
