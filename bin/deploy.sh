@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-echo " 👷‍♂️ Staring Movie API Deploy"
 clear
+echo " 👷‍♂️ Staring Movie API Deploy"
 git checkout main
 git pull
 git checkout deploy
