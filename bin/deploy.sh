@@ -11,36 +11,44 @@ echo "
  / ___|  ___ _ ____   _____ _ __  __   _/ | / _ \ 
  \___ \ / _ \ '__\ \ / / _ \ '__| \ \ / / || | | |
   ___) |  __/ |   \ V /  __/ |     \ V /| || |_| |
- |____/ \___|_|    \_/ \___|_|      \_/ |_(_)___/ 
-                                                  
+ |____/ \___|_|    \_/ \___|_|      \_/ |_(_)___/                                              
 "
-echo "============================================================"
+echo "=================================================="
+echo "" && echo ""
 }
+
+function start_deploy () {
+  echo "merging the main"
+  #   git checkout main
+# git pull
+# #  # git checkout deploy
+# #   # git pull
+# #   # git merge -X theirs main
+# #   # git commit -am "version update $(date)"
+# #   # git checkout main
+
+}
+
 
 
 clear
 logo
 echo " 👷‍♂️  Staring Movie API Deployment "
 git diff-index --quiet HEAD -- || echo " ⛔️  Uncommitted changes, please commit all your changes before deploy" && exit 
-git checkout main
-git pull
+
 
 
 echo " 👷‍♂️ Running test "
 if npm run test
 then
   echo " 👷‍♂️ Tests are ok ✅ starting the deploy  "
-  # git checkout deploy
-  # git pull
-  # git merge -X theirs main
-  # git commit -am "version update $(date)"
-
-  # git checkout main
+  start_deploy
 else
   echo "NO !!"
 fi
 echo " 👷‍♂️ Tests are broken ⛔️  terminating the deployment "
 
+echo "" && echo ""
 # git add .
 # git commit -am "new deploy $(date)"
 # git push heroku deploy
