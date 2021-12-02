@@ -16,7 +16,8 @@ afterEach(() => {
   sinon.restore()
 })
 
-after(() => {
+after(async () => {
+  console.log('here')
   server.close()
 })
 
