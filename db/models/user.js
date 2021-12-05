@@ -3,7 +3,7 @@ const { Schema } = mongoose
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const validator = require('validator')
-const {JWT_SECRET} = process.env
+const { JWT_SECRET } = process.env
 
 const userSchema = new Schema({
   name: {
@@ -61,12 +61,11 @@ userSchema.statics.findByCredentials = async (email, password) => {
 }
 
 userSchema.methods.generateAuthToken = async function (...args) {
-    console.log('args', args)
-    console.log('JWT_SECRET', JWT_SECRET)
-  if (!JWT_SECRET) { 
-      
-      throw new Error("JWT_SECRET cannot be null")
-    }
+  console.log('args', args)
+  console.log('JWT_SECRET', JWT_SECRET)
+  if (!JWT_SECRET) {
+    throw new Error('JWT_SECRET cannot be null')
+  }
   const user = this
   const token = jwt.sign({ _id: user._id.toString() }, JWT_SECRET)
   console.log('token', token)

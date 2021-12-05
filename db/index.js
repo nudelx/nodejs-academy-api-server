@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const fs = require('fs')
 const path = require('path')
-const basename = path.basename(__filename)
 const models = {}
 
 fs.readdirSync(path.join(__dirname, 'models'))
