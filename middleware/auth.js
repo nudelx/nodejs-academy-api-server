@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../db/models/user')
+const { User}  = require('../db')
 
 const auth = async (req, res, next) => {
     try {
@@ -9,9 +9,8 @@ const auth = async (req, res, next) => {
         const user = await User.findOne({ _id, 'tokens.token': token })
 
         if (!user) {
-            throw new Error()
+            throw new Error("Authorization user not found" )
         }
-
         req.user = user
         req.token = token
         next()

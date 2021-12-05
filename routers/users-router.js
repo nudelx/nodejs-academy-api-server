@@ -3,8 +3,9 @@ const User = require('./../db/models/user')
 const router = new express.Router()
 const auth = require('./../middleware/auth')
 
-router.post('', async (req, res) => {
+router.post('/', async (req, res) => {
     const user = new User(req.body)
+    console.log("about create a user")
 
     try {
         const savedUser = await user.save()
@@ -12,7 +13,7 @@ router.post('', async (req, res) => {
         const token = await user.generateAuthToken()
         res.status(201).send({ user, token })
     } catch (e) {
-        res.status(400).send(e)
+        res.status(400).send(e.message)
     }
 })
 
