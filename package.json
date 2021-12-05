@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "ls": "node_modules/.bin/ls",
-    "test": "mocha 'tests/**/*.js' --recursive --file tests/test-helper",
+    "test": "mocha --exit 'tests/**/*.js' --recursive --file tests/test-helper",
     "test:watch": "mocha 'tests/**/*.js' --recursive --file tests/test-helper --watch",
     "start:dev": "nodemon server.js",
     "start": "node server.js",
