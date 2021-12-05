@@ -3,7 +3,7 @@ const { User } = require('../db')
 const log = require('../utils/logger')
 const auth = async (req, res, next) => {
   try {
-    log('Auth MDW.', 'auth')
+    log('Auth MDW', 'auth')
     const token = req.header('Authorization').replace('Bearer ', '')
     log(`Auth MDW - token: ${token}`, 'auth')
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
