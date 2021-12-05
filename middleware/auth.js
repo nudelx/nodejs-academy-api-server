@@ -10,6 +10,7 @@ const auth = async (req, res, next) => {
     const { _id } = decoded
     const user = await User.findOne({ _id, token })
     if (!user) {
+        log(`Auth MDW - no user`, 'auth')
       throw new Error('Authorization user not found')
     }
     req.user = user
