@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-<<<<<<< HEAD
 function logo () {
 echo "
   __  __            _           _    ____ ___     
@@ -54,21 +53,3 @@ then
 else
   echo " ⛔️ Tests are broken terminating the deployment "
 fi
-=======
-# clear
-# echo " 👷‍♂️  Staring Movie API Deploy "
-# git checkout main
-# git pull
-# git checkout deploy
-# git pull
-# git merge -X theirs main
-# git commit -am "version update $(date)"
-# npm run test
-# echo " bla bla $? " 
-
-# # git add .
-# # git commit -am "new deploy $(date)"
-# # git push heroku deploy
-
-# git checkout main
->>>>>>> main
