@@ -61,8 +61,6 @@ userSchema.statics.findByCredentials = async (email, password) => {
 }
 
 userSchema.methods.generateAuthToken = async function (...args) {
-  console.log('args', args)
-  console.log('JWT_SECRET', JWT_SECRET)
   if (!JWT_SECRET) {
     throw new Error('JWT_SECRET cannot be null')
   }
