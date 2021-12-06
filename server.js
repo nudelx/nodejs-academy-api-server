@@ -8,7 +8,7 @@ const moviesRouter = require('./routers/movies-router')
 const usersRouter = require('./routers/users-router')
 
 const app = express()
-const port = 8080
+const port = process.env.PORT || 8080
 app.use(serverLog)
 app.use(express.json())
 app.use(
@@ -64,5 +64,5 @@ app.use(async (err, req, res, next) => {
   return res.status(err.statusCode).json({ error: err.message })
 })
 
-const server = app.listen(8080, () => console.log(` 🚀 server started on port ${port}`))
+const server = app.listen(port, () => console.log(` 🚀 server started on port ${port}`))
 module.exports = { app, server }
