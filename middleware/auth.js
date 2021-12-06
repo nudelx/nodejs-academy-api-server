@@ -16,10 +16,10 @@ const auth = async (req, res, next) => {
     }
     req.user = user
     req.token = token
-    log('Auth MDW - Authorization completed' , 'auth')
+    log('Auth MDW - Authorization completed', 'auth')
     next()
   } catch (e) {
-    log('Auth MDW - Authorization Error' , 'bad')
+    log('Auth MDW - Authorization Error', 'bad')
     res.status(401).send({ error: 'Please authenticate' })
   }
 }
