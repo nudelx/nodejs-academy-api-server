@@ -35,7 +35,7 @@ router.post('/login', loginUser)
  * Logout user from the system by deleting his token.
  * Pay attention it should be authenticated user 
  */
-router.post('/logout', logoutUser)
+router.post('/logout', auth, logoutUser)
 
 
 /**

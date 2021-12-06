@@ -16,15 +16,15 @@ async function getAllMovies(offset, limit) {
 }
 
 async function updateMovie(id, { title, img, synopsis, rating, year }) {
-  const newMovieObject = await Movie.findOneAndReplace({ movie_id: id }, { title, img, synopsis, rating, year })
+  const newMovieObject = await Movie.findOneAndUpdate({ movie_id: id }, { title, img, synopsis, rating, year }, { new: true })
   return newMovieObject
 }
 
 async function getMovie(movieId, user) {
   const movie = await Movie.findOne({ movie_id: movieId })
-  if(!movie) return
+  if (!movie) return
   //return movies that are public
-  if(!movie.owner) return movie
+  if (!movie.owner) return movie
 
   if (movie.owner.equals(user._id)) {
     return movie
