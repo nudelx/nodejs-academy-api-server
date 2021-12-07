@@ -19,13 +19,14 @@ echo "" && echo ""
 
 function start_deploy () {
   echo " 👷‍♂️  Merging the main branch"
-  #   git checkout main
+    # git checkout main
 # git pull
 # #  # git checkout deploy
 # #   # git pull
 # #   # git merge -X theirs main
 # #   # git commit -am "version update $(date)"
 # #   # git checkout main
+  push_to_heroku  
 }
 
 function uncommitted () {
@@ -35,9 +36,9 @@ function uncommitted () {
 
 function push_to_heroku () {
   echo "👷‍♂️  Pushing to Heroku"
-  # git add .
-  # git commit -am "new deploy $(date)"
-  # git push heroku deploy
+  git add .
+  git commit -am "new deploy $(date)"
+  git push heroku main:deploy-dev
 }
 
 clear
