@@ -38,7 +38,7 @@ function push_to_heroku () {
   echo "👷‍♂️  Pushing to Heroku"
   git add .
   git commit -am "new deploy $(date)"
-  git push heroku main:deploy-dev
+  git push heroku deploy-dev:main
 }
 
 clear
