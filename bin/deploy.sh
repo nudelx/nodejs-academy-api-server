@@ -39,7 +39,7 @@ function push_to_heroku () {
   git add .
   git commit -am "new deploy $(date)"
   # git push heroku deploy-dev:main
-  git push -f heroku deploy-dev:master 
+  git push -f heroku deploy-dev:master
 }
 
 clear
