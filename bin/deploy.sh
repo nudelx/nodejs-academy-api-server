@@ -35,7 +35,7 @@ function uncommitted () {
 }
 
 function push_to_heroku () {
-  echo "👷‍♂️  Pushing to Heroku"
+  echo " 👷‍♂️  Pushing to Heroku"
   git add .
   git commit -am "new deploy $(date)"
   # git push heroku deploy-dev:main
