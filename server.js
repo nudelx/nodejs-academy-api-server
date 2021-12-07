@@ -52,7 +52,6 @@ app
     })
   })
 
-  
 app.use(async (err, req, res, next) => {
   if (res && res.headersSent) {
     return next(err)

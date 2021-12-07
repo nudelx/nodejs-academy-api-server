@@ -67,8 +67,8 @@ const getRating = () =>
 console.log('start')
 const a = [getMovie(), getActor(), getRating()]
 Promise.allSettled(a)
-.then(console.log)
-.catch(e => console.log('error', e))
+  .then(console.log)
+  .catch((e) => console.log('error', e))
 
 console.log('end')
 
@@ -112,9 +112,7 @@ console.log('end')
 
 function checkMail() {
   return new Promise((yes, no) => {
-    Math.random() > 0.5 
-      ? yes('Mail has arrived') 
-      : no(new Error('Failed to arrive'))
+    Math.random() > 0.5 ? yes('Mail has arrived') : no(new Error('Failed to arrive'))
   })
 }
 
@@ -122,5 +120,5 @@ checkMail()
   .then(console.log)
   .catch(console.error)
   .finally(() => {
-    console.log('Experiment completed');
+    console.log('Experiment completed')
   })
