@@ -15,10 +15,10 @@ const {
 const moviesRouter = express.Router()
 
 moviesRouter.get('/', auth, getMovies)
-moviesRouter.get('/:id', auth, checkLegalID, getById)
+moviesRouter.get('/:id', auth, validate("getById"), getById)
 moviesRouter.post('/', auth, validate('createMovie'), createMovie)
-moviesRouter.put('/', upsertMovie)
-moviesRouter.patch('/:id', checkLegalID, modifyMovie)
-moviesRouter.delete('/:id', checkLegalID, deleteMovie)
+moviesRouter.put('/', auth, validate('upsertMovie'), upsertMovie)
+moviesRouter.patch('/:id', auth, validate('modifyMovie'), modifyMovie)
+moviesRouter.delete('/:id', auth, validate('deleteMovie'), deleteMovie)
 
 module.exports = moviesRouter

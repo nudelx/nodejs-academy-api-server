@@ -1,4 +1,4 @@
-function InvalidMovieParamError(message) {
+function InvalidParamError(message) {
   var error = new Error(message)
   error.statusCode = 400
   error.isOperational = true
@@ -6,4 +6,4 @@ function InvalidMovieParamError(message) {
 }
 
 
-module.exports = InvalidMovieParamError
+module.exports = InvalidParamError

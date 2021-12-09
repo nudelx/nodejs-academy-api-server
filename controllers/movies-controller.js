@@ -1,11 +1,11 @@
-const InvalidMovieParamError = require('../errors/InvalidMovieParamError')
-const InternalError = require('../errors/InvalidMovieParamError')
-const { body, validationResult } = require('express-validator')
+const InvalidMovieParamError = require('../errors/InvalidParamError')
+const InternalError = require('../errors/InvalidParamError')
+const { body, param, validationResult } = require('express-validator')
 const MoviesService = require('../services/movies-service')
 const DEFAULT_OFFSET = 0
 const DEFAULT_LIMIT = 20
 
-async function getMovies(request, response) {
+async function getMovies(request, response, next) {
   let { offset, limit } = request.query
 
   if (offset) {
@@ -24,13 +24,19 @@ async function getMovies(request, response) {
     const movies = await MoviesService.getAllMovies(offset, limit)
     return response.status(200).json({ movies, total: movies.length })
   } catch (err) {
-    throw InternalError("Failed to get movies from DB")
+    next(err)
   }
 }
 
 async function getById(request, response, next) {
+  const errors = validationResult(request)
+  if (!errors.isEmpty()) {
+    return next(InvalidMovieParamError(errors.array()[0].msg));
+  }
+
   const { id } = request.params
   const movieId = parseInt(id, 10)
+  console.log("User", request.user)
   try {
     const movie = await MoviesService.getMovie(movieId, request.user)
     if (!!movie) {
@@ -56,27 +62,15 @@ async function createMovie(request, response, next) {
 }
 
 async function upsertMovie(request, response, next) {
+  const errors = validationResult(request)
+  if (!errors.isEmpty()) {
+    return next(InvalidMovieParamError(errors.array()[0].msg));
+  }
+
   const { title, img, synopsis, rating, year } = request.body
-
-  if (!title) {
-    return next(InvalidMovieParamError('title is a required body param'))
-  }
-
-  if (!synopsis) {
-    return next(InvalidMovieParamError('synopsis is a required body param'))
-  }
-
-  if (!rating) {
-    return next(InvalidMovieParamError('rating is a required body param'))
-  }
-
-  if (!year) {
-    return next(InvalidMovieParamError('year is a required body param'))
-  }
 
   const movie = await MoviesService.getByTitle(title)
   const doesMovieExist = !!movie
-
   if (doesMovieExist) {
     const updatedMovie = await MoviesService.updateMovie(movie.movie_id, { title, img, synopsis, rating, year })
     return response.status(200).json(updatedMovie)
@@ -86,9 +80,14 @@ async function upsertMovie(request, response, next) {
   }
 }
 
-async function modifyMovie(request, response) {
+async function modifyMovie(request, response, next) {
+  const errors = validationResult(request)
+  if (!errors.isEmpty()) {
+    return next(InvalidMovieParamError(errors.array()[0].msg));
+  }
+
   const movieId = parseInt(request.params.id)
-  const movie = await MoviesService.getMovie(movieId)
+  const movie = await MoviesService.getMovie(movieId, request.user)
   const doesMovieExist = !!movie
 
   if (!doesMovieExist) {
@@ -108,7 +107,12 @@ async function modifyMovie(request, response) {
   return response.status(200).json(updatedMovie)
 }
 
-async function deleteMovie(request, response) {
+async function deleteMovie(request, response, next) {
+  const errors = validationResult(request)
+  if (!errors.isEmpty()) {
+    return next(InvalidMovieParamError(errors.array()[0].msg));
+  }
+
   const movieId = parseInt(request.params.id)
   const deletedMovie = await MoviesService.deleteMovie(movieId)
 
@@ -129,6 +133,35 @@ function validate(method) {
         body('synopsis', 'synopsis doesn\'t exists').exists().isString().escape(),
         body('rating', 'rating doesn\'t exists or not numeric').exists().isNumeric(),
         body('year', 'year doesn\'t exists or not numeric').exists().isNumeric(),
+      ]
+    }
+    case 'getById': {
+      return [
+        param('id', "Invalid id").exists().isNumeric()
+      ]
+    }
+    case 'deleteMovie': {
+      return [
+        param('id', "Invalid id").exists().isNumeric()
+      ]
+    }
+    case 'upsertMovie': {
+      return [
+        body('title', 'title doesn\'t exists').exists().isString().escape(),
+        body('img', 'img is not exists or not valid url').exists().isURL(),
+        body('synopsis', 'synopsis doesn\'t exists').exists().isString().escape(),
+        body('rating', 'rating doesn\'t exists or not numeric').exists().isNumeric(),
+        body('year', 'year doesn\'t exists or not numeric').exists().isNumeric(),
+      ]
+    }
+    case 'modifyMovie': {
+      return [
+        param('id', "Invalid id").exists().isNumeric(),
+        body('title', 'title doesn\'t exists').optional().isString().escape(),
+        body('img', 'img is not exists or not valid url').optional().isURL(),
+        body('synopsis', 'synopsis doesn\'t exists').optional().isString().escape(),
+        body('rating', 'rating doesn\'t exists or not numeric').optional().isNumeric(),
+        body('year', 'year doesn\'t exists or not numeric').optional().isNumeric(),
       ]
     }
   }
