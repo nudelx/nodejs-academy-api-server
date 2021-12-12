@@ -17,35 +17,17 @@ echo "=================================================="
 echo "" && echo ""
 }
 
-# function start_deploy () {
-#   echo " 👷‍♂️  Merging the main branch"
-#     # git checkout main
-# # git pull
-# # #  # git checkout deploy
-# # #   # git pull
-# # #   # git merge -X theirs main
-# # #   # git commit -am "version update $(date)"
-# # #   # git checkout main
-#   push_to_heroku  
-# }
-
-# function uncommitted () {
-#   echo " ⛔️   Uncommitted changes, please commit all your changes before the deploy"
-#   exit 
-# }
-
 function start_deploy () {
   echo " 👷‍♂️  Pushing to Heroku"
   git add .
   git commit -am "new deploy $(date)"
   # git push heroku deploy-dev:main
-  git push -f heroku deploy-dev:master
+  git push -f heroku deploy-dev:main
 }
 
 clear
 logo
 echo " 👷‍♂️  Staring Movie API Deployment "
-# git diff-index --quiet HEAD -- || uncommitted
 
 echo " 👷‍♂️  Running test "
 if npm run test
