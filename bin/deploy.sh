@@ -17,24 +17,24 @@ echo "=================================================="
 echo "" && echo ""
 }
 
-function start_deploy () {
-  echo " 👷‍♂️  Merging the main branch"
-    # git checkout main
-# git pull
-# #  # git checkout deploy
-# #   # git pull
-# #   # git merge -X theirs main
-# #   # git commit -am "version update $(date)"
-# #   # git checkout main
-  push_to_heroku  
-}
+# function start_deploy () {
+#   echo " 👷‍♂️  Merging the main branch"
+#     # git checkout main
+# # git pull
+# # #  # git checkout deploy
+# # #   # git pull
+# # #   # git merge -X theirs main
+# # #   # git commit -am "version update $(date)"
+# # #   # git checkout main
+#   push_to_heroku  
+# }
 
 # function uncommitted () {
 #   echo " ⛔️   Uncommitted changes, please commit all your changes before the deploy"
 #   exit 
 # }
 
-function push_to_heroku () {
+function start_deploy () {
   echo " 👷‍♂️  Pushing to Heroku"
   git add .
   git commit -am "new deploy $(date)"
