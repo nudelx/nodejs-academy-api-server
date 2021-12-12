@@ -29,10 +29,10 @@ function start_deploy () {
   push_to_heroku  
 }
 
-function uncommitted () {
-  echo " ⛔️   Uncommitted changes, please commit all your changes before the deploy"
-  exit 
-}
+# function uncommitted () {
+#   echo " ⛔️   Uncommitted changes, please commit all your changes before the deploy"
+#   exit 
+# }
 
 function push_to_heroku () {
   echo " 👷‍♂️  Pushing to Heroku"

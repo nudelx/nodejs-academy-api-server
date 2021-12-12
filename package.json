@@ -9,7 +9,8 @@
     "test:watch": "mocha 'tests/**/*.js' --recursive --file tests/test-helper --watch",
     "start:dev": "nodemon server.js",
     "start": "node server.js",
-    "debug": "node --inspect-brk server.js"
+    "debug": "node --inspect-brk server.js",
+    "deploy": "bash ./bin/deploy.sh"
   },
   "author": "",
   "license": "ISC",
