@@ -21,6 +21,7 @@ function start_deploy () {
   echo " 👷‍♂️  Pushing to Heroku"
   git add .
   git commit -am "new deploy $(date)"
+  # git push heroku deploy-dev:main
   git push -f heroku deploy-dev:main
 }
 
